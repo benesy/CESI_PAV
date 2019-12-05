@@ -1,16 +1,25 @@
 <?php
-require_once('BDD.php');
-require_once('../MUser.php');
+require_once('Modele/Manager/BDD.php');
+require_once('Modele/MUser.php');
 
 class   UserManager extends BDD{
-    private     $_user;
-
     // Load l'user en BDD et return un type USER.
     // return null si l'user n'existe pas en BDD.
-    public function getUser($name)
+    public function getUser($login)
     {
-        //load le user de la BDD
-        return $this->_user;
+        $usr = new MUser();
+
+        $usr->setName("");
+        $usr->setPwd("");
+        $usr->setStatus("");
+        $res = $this->dbquery("SELECT login, pwd, status FROM user WHERE login='".$login."';");
+        $res = $res->fetch();
+        if ($res['login'] != ""){
+            $usr->setName($res['login']);
+            $usr->setPwd($res['pwd']);
+            $usr->setStatus($res['status']);
+        }
+        return $usr;
     }
 
     // Ajoute en BDD le USER passé en parametre

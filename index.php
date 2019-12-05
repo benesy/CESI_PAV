@@ -8,16 +8,20 @@
     try {
         if (isset($_SESSION['user']) && isset($_SESSION['status'])){
             // Si l'utilisateur est connecté en tant qu'agent
-            if ($_SESSION['status'] == 'agent'){
+            if ($_SESSION['status'] == 3){
                 $ctl = new CAgent();
+                $ctl->root();
                 }
             // Si l'utilisateur est connecté en tant qu'admin
-            else if ($_SESSION['status'] == 'admin'){
+            else if ($_SESSION['status'] == 2){
                 $ctl = new CAdmin();
+                $ctl->root();
                 }
             // Si l'utilisateur est connecté en tant que super admin
-            else if ($_SESSION['status'] == 's_admin'){
+            else if ($_SESSION['status'] == 1 ){
                 $ctl = new CSadmin();
+                $ctl->root();
+                $ctl->rootSA();
                 }
             // Gestion d'erreur du status de la session
             else {

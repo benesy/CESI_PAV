@@ -1,8 +1,8 @@
 <?php ob_start();
-    $url = "#";
+    $url = "index.php?page=deconnection";
     ?>
 <div>
-    <a href=<?= $url ?> >Gestion Tournés</a>
+    <a href=<?= $url ?> >Deconnection</a>
 </div>
 <?php
     $menu =$menu. ob_get_contents(); 

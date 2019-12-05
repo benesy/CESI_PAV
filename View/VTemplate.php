@@ -6,8 +6,11 @@
         <title><?= $title ?></title>
     </head>
     <body>
-        <?= $menu ?>
-        <?= $content ?>
-        ...
+        <?php
+            if (isset($menu))
+                echo $menu;
+            if (isset($content))
+                echo $content;
+        ?>
     </body>
 </html>
