@@ -1,4 +1,6 @@
 <?php
+require_once("Modele/MPav.php");
+require_once("Modele/Manager/PavManager.php");
 
 class   CAdmin{
 
@@ -10,6 +12,9 @@ class   CAdmin{
                     session_destroy();
                     header('location:index.php');
                     }
+                else if ($_GET['page'] == "gpav"){
+                    $this->menuPav();
+                }
                 else if ($_GET['page'] == "gcomptes"){
                     // creation par defaut
                     if ((isset($_GET['action']) && $_GET['action']  == "creation") ||
@@ -80,6 +85,28 @@ class   CAdmin{
             echo $_POST['loginEdit'];
 
         $this->display($title,$content);
+    }
+
+    private function menuPav(){
+        $title = "menu Pav";
+        $content = "toto";
+        $pav = new PavManager();
+        $mypav1 = new MPav();
+        $mypav1->setId(1);
+        $mypav1->setAdress("rue des martyrs 33000 chateau de la mort lente");
+        $mypav1->setFullness(3);
+        $pav->addPav($mypav1);
+        $res = $pav->getAllPav();
+        foreach($res as $i)
+        {
+            print_r($i);
+            echo "<br/>";
+        }
+
+
+
+        $this->display($title, $content);
+
     }
 
     public function display($title, $content){
