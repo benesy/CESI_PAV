@@ -11,11 +11,11 @@ ob_start();
         <div>
             <label for="pwd"> Mot de passe</label>
             <input type="password" id="password" name="pwd">
+        </div>
         <?php 
             if ($erreurPwd)
                 echo "<span>Login ou mdp incorrect</span>" 
         ?>
-        </div>
         <button type="submit">Connexion</button>
     </form>
 </div>

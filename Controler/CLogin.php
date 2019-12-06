@@ -16,6 +16,8 @@ class   CLogin{
             $_dbUser = $_dbSearch->getUser($_usr->getName());
             if (($_dbUser->getPwd() == MD5($_usr->getPwd())) && $_usr->getPwd() != ""){
                 $_SESSION['user'] = $_dbUser->getName();
+                $_SESSION['firstName'] = $_dbUser->getFirstName();
+                $_SESSION['lastName'] = $_dbUser->getLastName();
                 $_SESSION['status'] = $_dbUser->getStatus();
                 header('location:index.php');
             }

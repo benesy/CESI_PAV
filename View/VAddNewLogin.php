@@ -29,25 +29,22 @@
             <input type="password" id="password" name="pwd" required>
         </div>
         <div>
-            <label for="nom"> Nom</label>
-            <input type="text" id="nom" name="nom">
+            <label for="firstName"> Nom</label>
+            <input type="text" id="firstName" name="firstName" required>
         </div>
         <div>
-            <label for="firstname"> Prénom</label>
-            <input type="text" id="firstname" name="firstname">
+            <label for="lastName"> Prenom</label>
+            <input type="text" id="lastName" name="lastName" required>
         </div>
         <button type="submit">Ajouter</button>
     </form>
 </div>
 <div>
     <?php
-        if (isset($valiation) && $validation != "")
-        {
-            ?>
-                Nouvelle entrée enregistrée.
-            <?php
-        }
-
+        if (isset($validation) && $validation == 1)
+                echo "Nouvelle entrée enregistrée";
+        else if (isset($validation) && $validation == 2)
+                echo "Erreur";
     ?>
 </div>
 <?php

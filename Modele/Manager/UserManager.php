@@ -11,11 +11,15 @@ class   UserManager extends BDD{
 
         $usr->setName("");
         $usr->setPwd("");
+        $usr->setFirstName("");
+        $usr->setLastName("");
         $usr->setStatus("");
-        $res = $this->dbquery("SELECT login, pwd, status FROM user WHERE login='".$login."';");
+        $res = $this->dbquery("SELECT login, pwd, firstName, lastName, status FROM user WHERE login='".$login."';");
         $res = $res->fetch();
         if ($res['login'] != ""){
             $usr->setName($res['login']);
+            $usr->setFirstName($res['firstName']);
+            $usr->setLastName($res['lastName']);
             $usr->setPwd($res['pwd']);
             $usr->setStatus($res['status']);
         }
@@ -23,10 +27,24 @@ class   UserManager extends BDD{
     }
 
     // Ajoute en BDD le USER passé en parametre
-    // Renvoie un void
     public function addUser($user)
     {
-        //ajoute un user en bdd
+        $res = $this->dbquery("SELECT `login` FROM `user` WHERE `login` = '".$user->getName()."';");
+        $res = $res->fetch();
+        if(isset($res['login']) && $res['login'] != "")
+            return false;
+        $res = $this->dbquery("INSERT INTO `user` (  `login`, `firstName`, `lastName`, `status`, `pwd`) VALUES ('".$user->getName()."','".$user->getFirstName()."','".$user->getLastName()."', '3', '".MD5($user->getPwd())."');");
+        return true;
+    }
+
+    public function getAgentList(){
+        $res = $this->dbquery("SELECT `login`, `firstName`, `lastName` FROM `user` WHERE `status` = '3';");
+        $res = $res->fetchAll();
+        return $res;
+    }
+
+    public function delUser($user) {
+        $res = $this->dbquery("DELETE FROM `user` WHERE `login` = '".$user."';");
     }
 
 }
