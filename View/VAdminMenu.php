@@ -2,7 +2,7 @@
     $url = "#";
     ?>
 <div>
-    <a href= <?= $url ?> >Gestion PAV</a>
+<a href="index.php?page=gpav" >Gestion PAV</a>
 </div>
 <div>
     <a href=<?= $url ?> >Gestion Tournés</a>
