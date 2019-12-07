@@ -59,10 +59,10 @@ class   CAdmin{
         $usr = new MUser();
         $usrManager = new UserManager();
  
-        if (isset($_POST['editer'])){
+        if (isset($_POST['edit'])){
             //$agentList
-            require('View/VEditAgent.php');
-            echo $_POST['editer']." > ";
+           // require('View/VEditAgent.php');
+            echo $_POST['edit']." > ";
         }
         else {
              if (isset($_POST['suppr']))
@@ -75,10 +75,10 @@ class   CAdmin{
                     }
                 require('View/VEditAgent.php');
         }
-
+// debug ------------
             if (isset($_POST['loginEdit']))
             echo $_POST['loginEdit'];
-
+//-----------
         $this->display($title,$content);
     }
 
