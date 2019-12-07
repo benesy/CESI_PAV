@@ -45,6 +45,18 @@ class   UserManager extends BDD{
 
     public function delUser($user) {
         $res = $this->dbquery("DELETE FROM `user` WHERE `login` = '".$user."';");
+        return $res;
+    }
+
+    public function editUser($usr){
+        $res = $this->dbquery("UPDATE `user` SET `firstName` = '".$usr->getFirstName()."', `lastName` = '".$usr->getLastName()."' WHERE `login` = '".$usr->getName()."';");
+        return $res;
+
+    }
+
+    public function editUserPwd($usr){
+        $res = $this->dbquery("UPDATE `user` SET `pwd` = '".$usr->getPwd()."' WHERE `login` = '".$usr->getName()."';");
+        return $res;
     }
 
 }

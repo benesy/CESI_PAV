@@ -4,6 +4,11 @@ require_once("Modele/Manager/PavManager.php");
 
 class   CAdmin{
 
+
+    //-----------------------------
+    //     Rootage des pages
+    //-----------------------------
+
     public function root(){
         if (isset($_GET['page']))
             {
@@ -32,6 +37,11 @@ class   CAdmin{
             $this-> display("","");
     }
 
+
+    //-----------------------------
+    //      Ajout d'un agent
+    //-----------------------------
+
     private function menuCreation(){
         $soutitre = "Création agent";
         $sousMenu = "admGestionCompte";
@@ -55,35 +65,53 @@ class   CAdmin{
         require('View/VAddNewLogin.php');
         $this->display($title, $content);
     }
-    
+
+
+    //-----------------------------
+    //      Edition d'un agent
+    //-----------------------------
+
     private function menuEdit(){
         $soutitre = "Modification agent";
         $sousMenu = "admGestionCompte";
-        $title = "Edition Agent";
         $agentList = "";
         $usr = new MUser();
         $usrManager = new UserManager();
  
         if (isset($_POST['edit'])){
-            //$agentList
-           // require('View/VEditAgent.php');
-            echo $_POST['edit']." > ";
+            if (isset($_POST['loginEdit']) &&
+                isset($_POST['firstName']) &&
+                isset($_POST['lastName'])){
+                    $usr->setName($_POST['loginEdit']);
+                    $usr->setFirstName($_POST['firstName']);
+                    $usr->setLastName($_POST['lastName']);
+                    $usrManager->editUser($usr);
+                    if (isset($_POST['pwd']) && !empty($_POST['pwd']))
+                    {
+                        $usr->setPwd(MD5($_POST['pwd']));
+                        $usrManager->editUserPwd($usr);
+                    }
+                $validation = 1;
+                }
+            $title = "Modifictation Agent";
+            $bduser = $usrManager->getUser($_POST['loginEdit']);
+            $vuser = $bduser->getName();
+            $vfirstname = $bduser->getFirstName();
+            $vlastname = $bduser->getLastName();
+            require('View/VEditSelectedLogin.php');
         }
         else {
-             if (isset($_POST['suppr']))
+            $title = "Edition Agent";
+            if (isset($_POST['suppr']))
                 $usrManager->delUser($_POST['loginEdit']);
 
-                $res = $usrManager->getAgentList();
-                foreach($res as $tmp)
-                    {
-                        $agentList .= "<option value=".$tmp['login'].">".$tmp['login']." - ".$tmp['firstName']." ".$tmp['lastName']."</option>";
-                    }
-                require('View/VEditAgent.php');
+            $res = $usrManager->getAgentList();
+            foreach($res as $tmp)
+                {
+                    $agentList .= "<option value=".$tmp['login'].">".$tmp['login']." - ".$tmp['firstName']." ".$tmp['lastName']."</option>";
+                }
+            require('View/VEditAgent.php');
         }
-// debug ------------
-            if (isset($_POST['loginEdit']))
-            echo $_POST['loginEdit'];
-//-----------
         $this->display($title,$content);
     }
 
@@ -95,7 +123,7 @@ class   CAdmin{
         $mypav1->setId(1);
         $mypav1->setAdress("rue des martyrs 33000 chateau de la mort lente");
         $mypav1->setFullness(3);
-        $pav->addPav($mypav1);
+//        $pav->addPav($mypav1);
         $res = $pav->getAllPav();
         foreach($res as $i)
         {
@@ -108,6 +136,10 @@ class   CAdmin{
         $this->display($title, $content);
 
     }
+
+    //-----------------------------
+    //    Affichage de la page 
+    //-----------------------------
 
     public function display($title, $content){
 
