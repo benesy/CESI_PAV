@@ -8,7 +8,7 @@
     <a href=<?= $url ?> >Gestion Tournés</a>
 </div>
 <div>
-    <a href="index.php?page=gcomptes" >Gestion Comptes</a>
+    <a href="index.php?page=gcomptes" >Gestion Comptes Agents</a>
 </div>
 <?php
     $menu =$menu. ob_get_contents(); 

@@ -3,6 +3,7 @@
 class CAgent{
 
     public function root(){
+        $title = "PAV";
         if (isset($_GET['page']))
             {
                 if ($_GET['page'] == "deconnection"){
@@ -11,14 +12,15 @@ class CAgent{
                     header('location:index.php');
                     }
                 else   
-                $this->display();
+                $this->display($title, "");
             }
         else
-            $this-> display();
+            $this-> display($title, "");
     }
 
-    public function display(){
+    public function display($title, $content){
         require('View/VAgentAllTournee.php');
+        require('View/VDeconnectMenu.php');
         require('View/VTemplate.php');
     }
 }
