@@ -1,5 +1,7 @@
 <?php
 
+require_once("Modele/Agent.php");
+
 class           MAgent extends BDD
 {
 
@@ -55,5 +57,20 @@ class           MAgent extends BDD
             return $listAgent;
         }
         return false;
+    }
+
+    public function create($agent)
+    {
+        $this->dbquery("INSERT INTO `agent` (`password`, `login`, `id`, `nom`, `prenom`) VALUES (" . $agent->get_password() . ", " . $agent->get_login() . ", NULL, " . $agent->get_nom() . ", " . $agent->get_prenom() . ");");
+    }
+
+    public function update($agent)
+    {
+        $this->dbquery("UPDATE `agent` SET `password`=" . $agent->get_password() . ",`login`=" . $agent->get_login() . ",`nom`=" . $agent->get_nom() . ",`prenom`=" . $agent->get_prenom() . " WHERE `id` =" . $agent->get_id() . ";");
+    }
+
+    public function delete($agent)
+    {
+        $this->dbquery("DELETE FROM `agent` WHERE `agent`.`id` = " . $agent->get_id() . ";");
     }
 }
