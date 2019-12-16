@@ -45,12 +45,12 @@ class               MPav extends BDD
 
     public function create($pav)
     {
-        $this->dbquery("INSERT INTO `pav` (`id`, `numero`, `adresse`, `code_postal`, `ville`) VALUES (NULL, " . $pav->get_numero() . ", " . $pav->get_adresse() . ", " . $pav->get_code_postal() . ", " . $pav->get_ville() . ");");
+        $this->dbquery("INSERT INTO `pav` (`id`, `numero`, `adresse`, `code_postal`, `ville`) VALUES (NULL, '" . $pav->get_numero() . "', '" . $pav->get_adresse() . "', '" . $pav->get_code_postal() . "', '" . $pav->get_ville() . "');");
     }
 
     public function update($pav)
     {
-        $this->dbquery("UPDATE `pav` SET `numero` = " . $pav->get_numero() . ", `adresse` = " . $pav->get_adresse() . ", `code_postal` = " . $pav->get_code_postal() . ", `ville` = " . $pav->get_ville() . " WHERE `pav`.`id` = " . $pav->get_id() . ";");
+        $this->dbquery("UPDATE `pav` SET `numero` = '" . $pav->get_numero() . "', `adresse` = '" . $pav->get_adresse() . "', `code_postal` = '" . $pav->get_code_postal() . "', `ville` = '" . $pav->get_ville() . "' WHERE `pav`.`id` = '" . $pav->get_id() . "';");
     }
 
     public function delete($pav)

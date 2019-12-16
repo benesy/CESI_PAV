@@ -40,12 +40,12 @@ class           MTournee extends BDD
 
     public function create($tour)
     {
-        $this->dbquery("INSERT INTO `tournee` (`id`, `date`, `id_agent`) VALUES (NULL, " . $tour->get_date() . ", " . $tour->get_id_agent() . ");");
+        $this->dbquery("INSERT INTO `tournee` (`id`, `date`, `id_agent`) VALUES (NULL, '" . $tour->get_date() . "', '" . $tour->get_id_agent() . "');");
     }
 
     public function update($tour)
     {
-        $this->dbquery("UPDATE `tournee` SET `date` = " . $tour->get_date() . ", `id_agent` = " . $tour->get_id_agent() . " WHERE `tournee`.`id` = " . $tour->get_id() . ";");
+        $this->dbquery("UPDATE `tournee` SET `date` = '" . $tour->get_date() . "', `id_agent` = '" . $tour->get_id_agent() . "' WHERE `tournee`.`id` = '" . $tour->get_id() . "';");
     }
 
     public function delete($tour)
