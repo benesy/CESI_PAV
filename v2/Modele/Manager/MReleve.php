@@ -1,5 +1,5 @@
 <?php
-
+require_once("Modele/Manager/BDD.php");
 require_once("Modele/Releve.php");
 
 class           MReleve extends BDD{

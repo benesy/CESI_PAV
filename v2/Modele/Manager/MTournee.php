@@ -1,5 +1,5 @@
 <?php
-
+require_once("Modele/Manager/BDD.php");
 require_once("Modele/Tournee.php");
 
 class           MTournee extends BDD
