@@ -62,6 +62,18 @@ class           MAgent extends BDD
     public function create($agent)
     {
         $this->dbquery("INSERT INTO `agent` (`password`, `login`, `id`, `nom`, `prenom`) VALUES ('" . $agent->get_password() . "', '" . $agent->get_login() . "', NULL, '" . $agent->get_nom() . "', '" . $agent->get_prenom() . "');");
+        $res = $this->dbquery("SELECT * FROM `agent` WHERE `id` = LAST_INSERT_ID();");
+        $res = $res->fetchAll();
+        if (isset($res[0]['id'])) {
+            $res = $res[0];
+            $agent = new Agent();
+            $agent->set_id($res['id']);
+            $agent->set_nom($res['nom']);
+            $agent->set_prenom($res['prenom']);
+            $agent->set_login($res['login']);
+            $agent->set_password($res['password']);
+            return $agent;
+        }
     }
 
     public function update($agent)

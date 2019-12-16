@@ -41,6 +41,16 @@ class           MTournee extends BDD
     public function create($tour)
     {
         $this->dbquery("INSERT INTO `tournee` (`id`, `date`, `id_agent`) VALUES (NULL, '" . $tour->get_date() . "', '" . $tour->get_id_agent() . "');");
+        $res = $this->dbquery("SELECT * FROM `tournee` WHERE `id` = LAST_INSERT_ID();");
+        $res = $res->fetchAll();
+        if (isset($res[0]['id'])) {
+            $res = $res[0];
+            $tour = new Tournee();
+            $tour->set_id($res['id']);
+            $tour->set_date($res['date']);
+            $tour->set_id_agent($res['id_agent']);
+            return $tour;
+        }
     }
 
     public function update($tour)
