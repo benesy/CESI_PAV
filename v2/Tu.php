@@ -2,15 +2,15 @@
 require_once("./Modele/Manager/MAdmin.php");
 require_once("./Modele/Manager/MAgent.php");
 require_once("./Modele/Manager/MPav.php");
-require_once("./Modele/Manager/BDD.php");
-require_once("./Modele/Manager/BDDparam.php");
+require_once("./Modele/Manager/MTournee.php");
+require_once("./Modele/Manager/MReleve.php");
 require_once("./Modele/Admin.php");
 
 assert_options(ASSERT_ACTIVE,   true);
 assert_options(ASSERT_BAIL,     false);
 assert_options(ASSERT_WARNING,  false);
 assert_options(ASSERT_CALLBACK, 'assert_callback');
-// $a = 1;
+
 
 function assert_callback($script, $line, $message){
 }
@@ -23,7 +23,15 @@ function myassert($a, $b, $function)
         echo $function . ' <span style="color:red">KO</span><br>';
 }
 
+///////////////////////////////////////////////////////////
+//                                                       //
+// Test des "retours requetes" des methodes de MAdmin.php  //
+//                                                       //
+///////////////////////////////////////////////////////////
+
+
 // Test "retour requete" de la fonction getByLogin de MAdmin.php
+
 $admin1 = new MAdmin();
 $admin2 = new Admin();
 
@@ -37,8 +45,16 @@ $admin2->set_password("gregprevot");
 echo "<h2>MAdmin</h2>";
 myassert($res, $admin2, "f : getByLogin -> ");
 
-// Test des "retours requetes" des methodes de MAgent.php
+
+///////////////////////////////////////////////////////////
+//                                                       //
+// Test des "retours requetes" des methodes de MAgent.php  //
+//                                                       //
+///////////////////////////////////////////////////////////
+
 // Test de la methode create($agent)
+
+echo "<h2>MAgent</h2>";
 
 $agent1 = new Agent();
 $agent1->set_id("");
@@ -48,33 +64,43 @@ $agent1->set_login("joce");
 $agent1->set_password("jocemich");
 
 $MAgent2 = new MAgent();
-$MAgent2->create($agent1);
+$res = $MAgent2->create($agent1);
+$agent1->set_id($res->get_id());
+myassert($res, $agent1, "f : create -> ");
 
-$resu = $MAgent2->getByLogin("joce");
-$agent1->set_id($resu->get_id());
-echo "<h2>MAgent</h2>";
-myassert($resu, $agent1, "f : create & getByLogin -> ");
+// Test de la methode getByLogin($agent)
+
+$res = $MAgent2->getByLogin("joce");
+myassert($res, $agent1, "f : getByLogin -> ");
 
 // Test de la methode getById($agent)
 
-$resu2 = $MAgent2->getById($resu->get_id());
-myassert($resu, $resu2, "f : getById -> ");
+$res2 = $MAgent2->getById($res->get_id());
+myassert($res, $res2, "f : getById -> ");
 
 // Test de la methode Update($agent)
 
-$resu2->set_prenom("denise");
-$MAgent2->update($resu2);
-$resu3 = $MAgent2->getById($resu->get_id());
-myassert($resu3, $resu2, "f : Update -> ");
+$res->set_prenom("denise");
+$MAgent2->update($res);
+$res2 = $MAgent2->getById($res->get_id());
+myassert($res, $res2, "f : Update -> ");
 
 // Test de la methode delete($agent)
 
-$MAgent2->delete($resu3);
-$res2 = $MAgent2->getById($resu3->get_id());
+$MAgent2->delete($res);
+$res2 = $MAgent2->getById($res->get_id());
 myassert($res2, false, "f : delete -> ");
 
+
+
+///////////////////////////////////////////////////////////
+//                                                       //
+// Test des "retours requetes" des methodes de MPav.php  //
+//                                                       //
+///////////////////////////////////////////////////////////
+
 echo "<h2>MPav</h2>";
-// Test des "retours requetes" des methodes de MPav.php
+
 // Test de la methode create($pav)
 
 $pav = new Pav();
@@ -85,10 +111,7 @@ $pav->set_code_postal("33140");
 $pav->set_ville("bordeaux");
 
 $MPav = new MPav();
-$MPav->create($pav);
-
-$res = $MPav->getAll();
-$res = $res[0];
+$res = $MPav->create($pav);
 $pav->set_id($res->get_id());
 myassert($res, $pav, "f : create -> ");
 
@@ -109,3 +132,125 @@ myassert($res, $pav, "f : Update -> ");
 $MPav->delete($pav);
 $res = $MPav->getById($pav->get_id());
 myassert(false, $res, "f : Delete -> ");
+
+////////////////////////////////////////////////////////////////
+//                                                            //
+// Test des "retours requetes" des methodes de MTournee.php  //
+//                                                          //
+/////////////////////////////////////////////////////////////
+
+echo "<h2>MTournee</h2>";
+
+$agent = new Agent();
+$MAgent = new MAgent();
+
+$agent->set_login("gege");
+$agent->set_password("geraillou");
+$agent->set_nom("caillou");
+$agent->set_prenom("gerard");
+$agent = $MAgent->create($agent);
+
+// Test de la methode Create
+
+$tournee = new Tournee();
+$MTournee = new MTournee();
+
+$tournee->set_date("2019-12-16");
+$tournee->set_id_agent($agent->get_id());
+$tournee2 = $MTournee->create($tournee);
+$tournee->set_id($tournee2->get_id());
+myassert($tournee2, $tournee, "f : create -> ");
+
+// Test de la methode getById
+
+$tournee2 = $MTournee->getById($tournee->get_id());
+myassert($tournee2, $tournee, "f : getById -> ");
+
+
+// Test de la methode Update
+
+$tournee->set_date("2019-12-15");
+$MTournee->update($tournee);
+$tournee2 = $MTournee->getById($tournee->get_id());
+myassert($tournee2, $tournee, "f : Update -> ");
+
+// Test de la methode Delete
+
+$MTournee->delete($tournee);
+$tournee2 = $MTournee->getById($tournee->get_id());
+myassert($tournee2, false, "f : Delete -> ");
+
+// Suppression de toutes les entrées de tests dans la BDD
+
+$MAgent->delete($agent);
+
+
+////////////////////////////////////////////////////////////////
+//                                                            ////
+// Test des "retours requetes" des methodes de MReleve.php //
+//                                                          ////
+/////////////////////////////////////////////////////////////
+
+echo "<h2>MReleve</h2>";
+
+$pav = new Pav();
+$MPav = new MPav();
+$agent = new Agent();
+$MAgent = new MAgent();
+$tournee = new Tournee();
+$MTournee = new MTournee();
+
+$pav->set_numero("1");
+$pav->set_adresse("rue de la pompe");
+$pav->set_code_postal("33000");
+$pav->set_ville("bordeaux");
+$pav = $MPav->create($pav);
+
+$agent->set_nom("boulard");
+$agent->set_prenom("rene");
+$agent->set_login("renard");
+$agent->set_password("boulet");
+$agent = $MAgent->create($agent);
+
+$tournee->set_date("2019-12-16");
+$tournee->set_id_agent($agent->get_id());
+$tournee = $MTournee->create($tournee);
+
+// Test de la methode Create
+
+$releve = new Releve();
+$MReleve = new MReleve();
+
+$releve->set_date("2019-12-16");
+$releve->set_status("0");
+$releve->set_niveau("3");
+$releve->set_commentaire("blablabla");
+$releve->set_id_tournee($tournee->get_id());
+$releve->set_id_pav($pav->get_id());
+
+$releve2 = $MReleve->create($releve);
+$releve->set_id($releve2->get_id());
+myassert($releve2, $releve, "f : create -> ");
+
+// Test de la methode getById
+
+$releve2 = $MReleve->getById($releve->get_id());
+myassert($releve2, $releve, "f : getById -> ");
+
+// Test de la methode Delete
+
+$MReleve->delete($releve);
+$releve2 = $MReleve->getById($releve->get_id());
+myassert($releve2, false, "f : delete -> ");
+
+$MTournee->delete($tournee);
+$MAgent->delete($agent);
+$MPav->delete($pav);
+
+
+
+
+
+
+
+
