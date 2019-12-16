@@ -66,7 +66,7 @@ class           MAgent extends BDD
 
     public function update($agent)
     {
-        $this->dbquery("UPDATE `agent` SET `password`=" . $agent->get_password() . ",`login`=" . $agent->get_login() . ",`nom`=" . $agent->get_nom() . ",`prenom`=" . $agent->get_prenom() . " WHERE `id` =" . $agent->get_id() . ";");
+        $this->dbquery("UPDATE `agent` SET `password`='" . $agent->get_password() . "',`login`='" . $agent->get_login() . "',`nom`='" . $agent->get_nom() . "',`prenom`='" . $agent->get_prenom() . "' WHERE `id` ='" . $agent->get_id() . "';");
     }
 
     public function delete($agent)

@@ -47,12 +47,12 @@ class           MReleve extends BDD{
 
     public function create($releve)
     {
-        $this->dbquery("INSERT INTO `releve` (`id`, `status`, `date`, `niveau`, `commentaire`, `id_tournee`, `id_pav`) VALUES (NULL, ".$releve->get_status().", ".$releve->get_date().", ".$releve->get_niveau().", ".$releve->get_commentaire().", ".$releve->get_id_tournee().", ".$releve->get_id_pav().");");
+        $this->dbquery("INSERT INTO `releve` (`id`, `status`, `date`, `niveau`, `commentaire`, `id_tournee`, `id_pav`) VALUES (NULL, '".$releve->get_status()."', '".$releve->get_date()."', '".$releve->get_niveau()."', '".$releve->get_commentaire()."', '".$releve->get_id_tournee()."', '".$releve->get_id_pav()."');");
     }
 
     public function update($releve)
     {
-        $this->dbquery("UPDATE `releve` SET `status` = ".$releve->get_status().", `date` = ".$releve->get_date().", `niveau` = ".$releve->get_niveau().", `commentaire` = ".$releve->get_commentaire().", `id_tournee` = ".$releve->get_id_tournee().", `id_pav` = ".$releve->get_id_pav()." WHERE `releve`.`id` = ".$releve->get_id().";");
+        $this->dbquery("UPDATE `releve` SET `status` = '".$releve->get_status()."', `date` = '".$releve->get_date()."', `niveau` = '".$releve->get_niveau()."', `commentaire` = '".$releve->get_commentaire()."', `id_tournee` = '".$releve->get_id_tournee()."', `id_pav` = '".$releve->get_id_pav()."' WHERE `releve`.`id` = '".$releve->get_id()."';");
     }
 
     public function delete($releve)
