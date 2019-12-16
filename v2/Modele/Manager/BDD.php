@@ -2,6 +2,7 @@
 
 require_once("BDDParam.php");
 
+
 abstract class   BDD extends BDDParam{
     private $db = false;
 

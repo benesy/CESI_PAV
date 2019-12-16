@@ -1,7 +1,9 @@
 <?php
-require_once("Modele/Admin.php");
+require_once("./Modele/Admin.php");
+require_once("./Modele/Manager/BDD.php");
 
-class           MAdmin extends BDD
+
+class MAdmin extends BDD
 {
     public function getByLogin($login){
         $res = $this->dbquery("SELECT * FROM `admin` WHERE `login` = '".$login."';");
@@ -19,3 +21,4 @@ class           MAdmin extends BDD
         return false;
     }
 }
+?>
