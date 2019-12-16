@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 13 déc. 2019 à 12:59
+-- Généré le :  lun. 16 déc. 2019 à 10:44
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -54,7 +54,14 @@ CREATE TABLE IF NOT EXISTS `agent` (
   `nom` varchar(20) NOT NULL,
   `prenom` varchar(20) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `agent`
+--
+
+INSERT INTO `agent` (`password`, `login`, `id`, `nom`, `prenom`) VALUES
+('qsd', 'qsd', 2, 'qsd', 'qsd');
 
 -- --------------------------------------------------------
 
@@ -70,7 +77,14 @@ CREATE TABLE IF NOT EXISTS `pav` (
   `code_postal` int(11) NOT NULL,
   `ville` varchar(30) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `pav`
+--
+
+INSERT INTO `pav` (`id`, `numero`, `adresse`, `code_postal`, `ville`) VALUES
+(1, 5, 'addré', 33001, 'villes');
 
 -- --------------------------------------------------------
 
@@ -90,7 +104,14 @@ CREATE TABLE IF NOT EXISTS `releve` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `id_pav` (`id_pav`),
   KEY `id_tournee` (`id_tournee`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `releve`
+--
+
+INSERT INTO `releve` (`id`, `status`, `date`, `niveau`, `commentaire`, `id_tournee`, `id_pav`) VALUES
+(1, 's', '2019-12-17', 2, 'fjsqlkq,dfq', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -103,11 +124,16 @@ CREATE TABLE IF NOT EXISTS `tournee` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `id_agent` int(11) NOT NULL,
-  `id_releve` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  KEY `id_agent` (`id_agent`),
-  KEY `id_releve` (`id_releve`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `id_agent` (`id_agent`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `tournee`
+--
+
+INSERT INTO `tournee` (`id`, `date`, `id_agent`) VALUES
+(5, '2019-08-11', 2);
 
 --
 -- Contraintes pour les tables déchargées
@@ -124,8 +150,7 @@ ALTER TABLE `releve`
 -- Contraintes pour la table `tournee`
 --
 ALTER TABLE `tournee`
-  ADD CONSTRAINT `id_agent` FOREIGN KEY (`id_agent`) REFERENCES `agent` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `id_releve` FOREIGN KEY (`id_releve`) REFERENCES `releve` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `id_agent` FOREIGN KEY (`id_agent`) REFERENCES `agent` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
