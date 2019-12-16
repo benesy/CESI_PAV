@@ -1,4 +1,5 @@
 <?php
+require_once("Modele/Manager/BDD.php");
 require_once("Modele/Admin.php");
 
 class           MAdmin extends BDD
