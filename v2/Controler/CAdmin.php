@@ -56,8 +56,8 @@ class       CAdmin{
         $spav = new SPav();
         $validate = $spav->editPav();
         if (!$validate){
-            $agent = $spav->getPav();
-            if (!$agent)
+            $pav = $spav->getPav();
+            if (!$pav)
                 $pavList = $spav->getPavList();
         }
         require("View/AdminPavEdition.php");
