@@ -12,14 +12,14 @@ ob_start();
             <label for="pwd"> Mot de passe</label>
             <input type="password" id="password" name="pwd">
         </div>
-        <?php 
-            if ($erreurPwd)
-                echo "<span>Login ou mdp incorrect</span>" 
-        ?>
+        <?php
+        if (isset($erreurPwd) && $erreurPwd)
+            echo "<span>Login ou mdp incorrect</span>"
+            ?>
         <button type="submit">Connexion</button>
     </form>
 </div>
-<?php 
-$content = $content.ob_get_contents();
+<?php
+$content = $content . ob_get_contents();
 ob_clean();
 ?>
