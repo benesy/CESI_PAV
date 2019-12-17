@@ -7,10 +7,10 @@
     </head>
     <body>
         <?php
-            if (isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && !empty($_SESSION['firstName'])){
+            if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])){
                 ?>
                     <div>
-                        Bienvenue <?= $_SESSION['firstName'] ?> <?= $_SESSION['lastName'] ?> !
+                        Bienvenue <?= $_SESSION['prenom'] ?> <?= $_SESSION['nom'] ?> !
                          ( <a href="?page=deconnect">Deconnexion</a> )
                     </div>
                 <?php
@@ -23,7 +23,7 @@
                 <?php
             }
             if (isset($menu))
-                echo $menu;
+                echo "<nav><ul>".$menu."</ul></nav>";
             if (isset($content))
                 echo $content;
         ?>
