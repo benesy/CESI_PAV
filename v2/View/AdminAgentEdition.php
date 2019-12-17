@@ -2,7 +2,7 @@
 $title = "PAV Agent";
 ob_start();
 ?>
-Agent - Edition
+
 
 <?php if (isset($validate) && $validate){?>
     Agent mis à jour.

@@ -2,7 +2,6 @@
 $title = "PAV - Agent";
 ob_start();
 ?>
-Agent - Supression
 
 <?php if (isset($validate) && $validate){?>
     Agent supprimé.
@@ -17,7 +16,6 @@ Agent - Supression
             echo '<option value="'.$agent->get_id().'">'.$agent->get_login()." ".$agent->get_nom()." ".$agent->get_prenom().'</option>';
         } ?>
         </select>
-        <input type="hidden" id="id" name="id" require value="<?= $agent->get_id()?>">
         <button type="submit" href="?page=editionagent">Supprimer</button>
         
 </form>

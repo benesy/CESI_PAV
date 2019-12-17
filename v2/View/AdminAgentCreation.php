@@ -2,7 +2,7 @@
 $title = "PAV Agent";
 ob_start();
 ?>
-<h3>Agent - Creation</h3>
+
 <?php if (isset($validate) && $validate){?>
     Nouvel agent crée.
     
