@@ -17,6 +17,14 @@ class       SAgent
         return false;
     }
 
+    private function checkIDAgent()
+    {
+        if (isset($_POST['id']) && !empty($_POST['id'])) {
+            return true;
+        }
+        return false;
+    }
+
     public function     createAgent()
     {
         if ($this->checkForm()) {
@@ -28,7 +36,35 @@ class       SAgent
             $agent->set_password($_POST['password']);
             $magent->create($agent);
             return true;
-         }
-         return false;
+        }
+        return false;
+    }
+
+    public function editAgent(){
+        if ($this->checkIDAgent() && $this->checkForm()){
+            $agent = new Agent();
+            $magent = new MAgent();
+            $agent->set_id($_POST['id']);
+            $agent->set_nom($_POST['nom']);
+            $agent->set_prenom($_POST['prenom']);
+            $agent->set_login($_POST['login']);
+            $agent->set_password($_POST['password']);
+            $magent->update($agent);
+            return true;
+        }
+        return false;
+    }
+
+    public function getAgent(){
+        if ($this->checkIDAgent()){
+            $magent = new MAgent();
+            return $magent->getById($_POST['id']);
+        }
+        return false;
+    }
+
+    public function getAgentList(){
+        $magent = new MAgent();
+        return $magent->getAll();
     }
 }

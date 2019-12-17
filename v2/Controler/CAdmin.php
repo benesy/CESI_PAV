@@ -20,6 +20,13 @@ class       CAdmin{
     }
 
     public function agentEdit(){
+        $sagent = new SAgent();
+        $validate = $sagent->editAgent();
+        if (!$validate){
+            $agent = $sagent->getAgent();
+            if (!$agent)
+                $agentList = $sagent->getAgentList();
+        }
         require("View/AdminAgentEdition.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
