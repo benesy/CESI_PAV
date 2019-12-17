@@ -58,7 +58,7 @@ class       SPav
     public function deletPav(){
         if ($this->checkIDPav()){
             $pav = new Pav();
-            $mpav = new MAgent();
+            $mpav = new MPav();
             $pav->set_id($_POST['id']);
             $mpav->delete($pav);
             return true;

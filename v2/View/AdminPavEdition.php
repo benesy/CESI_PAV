@@ -1,8 +1,6 @@
 <?php
 $title = "PAV - Edition";
 ob_start();
-if (isset($_POST['id']))
-echo $_POST['id']."-------";
 ?>
 
 
