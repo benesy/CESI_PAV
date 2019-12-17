@@ -33,6 +33,11 @@ class       CAdmin{
     }
 
     public function agentDelete(){
+        $sagent = new SAgent();
+
+        $validate = $sagent->deletAgent();
+        if (!$validate)
+            $agentList = $sagent->getAgentList();
         require("View/AdminAgentSupression.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
