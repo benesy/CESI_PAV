@@ -32,7 +32,7 @@ function myassert($a, $b, $function)
 ///////////////////////////////////////////////////////////
 
 // Test "retour requete" de la fonction getByLogin de MAdmin.php
-echo '<tr><td class="text-left"><h4>MAdmin</h4></td>';
+echo '<tr><td class="text-left">MAdmin</td>';
 $admin1 = new MAdmin();
 $admin2 = new Admin();
 
@@ -57,7 +57,7 @@ myassert($res, $admin2, "getByLogin");
 
 // Test de la methode create($agent)
 
-echo '<tr><td class="text-left"><h4>MAgent</h4></td>';
+echo '<tr><td class="text-left">MAgent</td>';
 
 $agent1 = new Agent();
 $agent1->set_id("");
@@ -73,19 +73,19 @@ myassert($res, $agent1, "create");
 
 // Test de la methode getByLogin($agent)
 
-echo '<tr><td class="text-left"><h4>MAgent</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $res = $MAgent2->getByLogin("joce");
 myassert($res, $agent1, "getByLogin");
 
 // Test de la methode getById($agent)
 
-echo '<tr><td class="text-left"><h4>MAgent</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $res2 = $MAgent2->getById($res->get_id());
 myassert($res, $res2, "getById");
 
 // Test de la methode Update($agent)
 
-echo '<tr><td class="text-left"><h4>MAgent</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $res->set_prenom("denise");
 $MAgent2->update($res);
 $res2 = $MAgent2->getById($res->get_id());
@@ -93,7 +93,7 @@ myassert($res, $res2, "Update");
 
 // Test de la methode delete($agent)
 
-echo '<tr><td class="text-left"><h4>MAgent</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $MAgent2->delete($res);
 $res2 = $MAgent2->getById($res->get_id());
 myassert($res2, false, "delete");
@@ -106,7 +106,7 @@ myassert($res2, false, "delete");
 //                                                       //
 ///////////////////////////////////////////////////////////
 
-echo '<tr><td class="text-left"><h4>MPav</h4></td>';
+echo '<tr><td class="text-left">MPav</td>';
 
 // Test de la methode create($pav)
 
@@ -124,13 +124,13 @@ myassert($res, $pav, "create");
 
 // Test de la methode getById($id)
 
-echo '<tr><td class="text-left"><h4>MPav</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $res = $MPav->getById($pav->get_id());
 myassert($res, $pav, "getById");
 
 // Test de la methode Update
 
-echo '<tr><td class="text-left"><h4>MPav</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $pav->set_ville("paris");
 $MPav->update($pav);
 $res = $MPav->getById($pav->get_id());
@@ -138,7 +138,7 @@ myassert($res, $pav, "Update");
 
 // Test de la methode Delete
 
-echo '<tr><td class="text-left"><h4>MPav</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $MPav->delete($pav);
 $res = $MPav->getById($pav->get_id());
 myassert(false, $res, "Delete");
@@ -162,7 +162,7 @@ $agent = $MAgent->create($agent);
 
 // Test de la methode Create
 
-echo '<tr><td class="text-left"><h4>MTournee</h4></td>';
+echo '<tr><td class="text-left">MTournee</td>';
 $tournee = new Tournee();
 $MTournee = new MTournee();
 
@@ -174,14 +174,14 @@ myassert($tournee2, $tournee, "create");
 
 // Test de la methode getById
 
-echo '<tr><td class="text-left"><h4>MTournee</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $tournee2 = $MTournee->getById($tournee->get_id());
 myassert($tournee2, $tournee, "getById");
 
 
 // Test de la methode Update
 
-echo '<tr><td class="text-left"><h4>MTournee</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $tournee->set_date("2019-12-15");
 $MTournee->update($tournee);
 $tournee2 = $MTournee->getById($tournee->get_id());
@@ -189,7 +189,7 @@ myassert($tournee2, $tournee, "Update ");
 
 // Test de la methode Delete
 
-echo '<tr><td class="text-left"><h4>MTournee</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $MTournee->delete($tournee);
 $tournee2 = $MTournee->getById($tournee->get_id());
 myassert($tournee2, false, "Delete");
@@ -205,7 +205,7 @@ $MAgent->delete($agent);
 //                                                          ////
 /////////////////////////////////////////////////////////////
 
-echo '<tr><td class="text-left"><h4>MReleve</h4></td>';
+echo '<tr><td class="text-left">MReleve</td>';
 
 $pav = new Pav();
 $MPav = new MPav();
@@ -248,13 +248,13 @@ myassert($releve2, $releve, "create");
 
 // Test de la methode getById
 
-echo '<tr><td class="text-left"><h4>MReleve</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $releve2 = $MReleve->getById($releve->get_id());
 myassert($releve2, $releve, "getById");
 
 // Test de la methode Delete
 
-echo '<tr><td class="text-left"><h4>MReleve</h4></td>';
+echo '<tr><td class="text-left"></td>';
 $MReleve->delete($releve);
 $releve2 = $MReleve->getById($releve->get_id());
 myassert($releve2, false, "delete");

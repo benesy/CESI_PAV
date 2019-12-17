@@ -55,9 +55,10 @@ th {
   background:#1b1e24;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
+  height: 40px;
   font-size:23px;
   font-weight: 100;
-  padding:24px;
+  padding:10px;
   text-align:center;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
@@ -128,7 +129,7 @@ td:last-child {
 }
 
 th.text-left {
-  text-align: center;
+  text-align: left;
 }
 
 th.text-center {
@@ -140,7 +141,7 @@ th.text-right {
 }
 
 td.text-left {
-  text-align: center;
+  text-align: left;
 }
 
 td.text-center {
@@ -154,9 +155,7 @@ td.text-right {
 </head>
 
 <body>
-<div class="table-title">
-<h3>Tests Unitaires Pav à Pav Table</h3>
-</div>
+
 <table class="table-fill">
 <thead>
 <tr>
