@@ -12,7 +12,8 @@ class       CAdmin{
 
     public function agentCreate(){
         $sagent = new SAgent();
-        $sagent->createAgent();
+        if ($sagent->createAgent())
+            $validate = true;
         require("View/AdminAgentCreation.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
