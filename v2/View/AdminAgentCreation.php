@@ -6,10 +6,10 @@ ob_start();
 <?php if (isset($validate) && $validate){?>
     Nouvel agent crée.
     
-    <button type="submit" href="?page=agentCreate">Retour</button>
+    <button type="submit" href="?page=creationagent">Retour</button>
 
 <?php } else {?>
-    <form action="?page=agentCreate" method="post">
+    <form action="?page=creationagent" method="post">
         <div>
             <label for="nom"> Nom</label>
             <input type="text" id="nom" name="nom" require>
@@ -24,7 +24,7 @@ ob_start();
         </div>
         <div>
             <label for="password"> Mot de passe</label>
-            <input type="password" id="password" name="pwd" require>
+            <input type="password" id="password" name="password" require>
         </div>
         
         <button type="submit">Envoi</button>
