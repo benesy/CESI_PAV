@@ -1,5 +1,5 @@
 <?php
-$title = "Edition des Agents";
+$title = "PAV Agent";
 ob_start();
 ?>
 Agent - Edition
@@ -7,7 +7,7 @@ Agent - Edition
 <?php if (isset($validate) && $validate){?>
     Agent mis à jour.
     
-    <button type="submit" href="?page=editionagent">Retour</button>
+    <a href="?page=editionagent"><input type="button" value="retour"></a>
 
 <?php } else if (isset($agentList)){?>
     <form action="?page=editionagent" method="post">
@@ -17,6 +17,7 @@ Agent - Edition
             echo '<option value="'.$agent->get_id().'">'.$agent->get_login()." ".$agent->get_nom()." ".$agent->get_prenom().'</option>';
         } ?>
         </select>
+        <button type="submit" href="?page=editionagent">Editer</button>
 </form>
 <?php } else { ?>
     

@@ -1,12 +1,12 @@
 <?php
-$title = "Création d'un nouvel Agent";
+$title = "PAV Agent";
 ob_start();
 ?>
 <h3>Agent - Creation</h3>
 <?php if (isset($validate) && $validate){?>
     Nouvel agent crée.
     
-    <button type="submit" href="?page=creationagent">Retour</button>
+    <a href="?page=creationagent"><input type="button" value="retour"></a>
 
 <?php } else {?>
     <form action="?page=creationagent" method="post">
