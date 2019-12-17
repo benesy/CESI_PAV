@@ -14,7 +14,7 @@ abstract class BDDParam{
         $this->dbHost = '127.0.0.1';
         $this->dbBase = 'mld_pav_v2';
         $this->dbUser = 'root';
-        $this->dbPwd = '';
+        $this->dbPwd = 'root';
         $this->dbCharset = 'utf8mb4';
         $this->dbOptions = [
             PDO::ATTR_ERRMODE               => PDO::ERRMODE_EXCEPTION,
