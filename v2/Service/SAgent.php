@@ -55,6 +55,17 @@ class       SAgent
         return false;
     }
 
+    public function deletAgent(){
+        if ($this->checkIDAgent()){
+            $agent = new Agent();
+            $magent = new MAgent();
+            $agent->set_id($_POST['id']);
+            $magent->delete($agent);
+            return true;
+        }
+        return false;
+    }
+
     public function getAgent(){
         if ($this->checkIDAgent()){
             $magent = new MAgent();
