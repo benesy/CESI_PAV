@@ -1,5 +1,7 @@
 <?php
 
+require_once("Service/SAgent.php");
+
 class       CAdmin{
 
     public function vueGlobale(){
@@ -9,6 +11,8 @@ class       CAdmin{
     }
 
     public function agentCreate(){
+        $sagent = new SAgent();
+        $sagent->createAgent();
         require("View/AdminAgentCreation.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
