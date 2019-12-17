@@ -15,12 +15,12 @@ ob_start();
             <input type="text" id="numero" name="numero" require>
         </div>
         <div>
-            <label for="adresse"> Adresse/label>
+            <label for="adresse"> Adresse</label>
             <input type="text" id="adresse" name="adresse" require>
         </div>
         <div>
-            <label for="codepostal"> Code postal</label>
-            <input type="text" id="codepostal" name="codepostal" require>
+            <label for="code_postal"> Code postal</label>
+            <input type="text" id="codepostal" name="code_postal" require>
         </div>
         <div>
             <label for="ville"> Ville</label>

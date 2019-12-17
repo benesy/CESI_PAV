@@ -1,7 +1,10 @@
 <?php
 $title = "PAV - Edition";
 ob_start();
+if (isset($_POST['id']))
+echo $_POST['id']."-------";
 ?>
+
 
 <?php if (isset($validate) && $validate){?>
     Pav mis à jour.
@@ -13,7 +16,7 @@ ob_start();
         <select name="id">
         <?php 
         foreach ($pavList as $pav){
-            echo '<option value="'.$pav->get_id().'">'.$pav->get_login()." ".$pav->get_nom()." ".$pav->get_prenom().'</option>';
+            echo '<option value="'.$pav->get_id().'">'.$pav->get_numero()." ".$pav->get_adresse()." ".$pav->get_code_postal()." ".$pav->get_ville()."</option>";
         } ?>
         </select>
         <button type="submit" href="?page=editionpav">Editer</button>
@@ -31,8 +34,8 @@ ob_start();
             <input type="text" id="adresse" name="adresse" require value="<?= $pav->get_adresse()?>">
         </div>
         <div>
-            <label for="codepostal"> Code postal</label>
-            <input type="text" id="codepostal" name="codepostal" require value="<?= $pav->get_code_postal()?>">
+            <label for="code_postal"> Code postal</label>
+            <input type="text" id="codepostal" name="code_postal" require value="<?= $pav->get_code_postal()?>">
         </div>
         <div>
             <label for="ville"> Ville</label>
