@@ -11,7 +11,6 @@
                 ?>
                     <div>
                         Bienvenue <?= $_SESSION['prenom'] ?> <?= $_SESSION['nom'] ?> !
-                         ( <a href="?page=deconnect">Deconnexion</a> )
                     </div>
                 <?php
             }
