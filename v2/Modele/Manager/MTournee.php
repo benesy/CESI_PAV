@@ -20,6 +20,21 @@ class           MTournee extends BDD
         return false;
     }
 
+    public function getByDate($date, $id_agent)
+    {
+        $res = $this->dbquery("SELECT * FROM `tournee` WHERE `id_agent` = '" . $id_agent . "' AND `date` = '" . $date ." ';");
+        $res = $res->fetchAll();
+        if (isset($res[0]['id'])) {
+            $res = $res[0];
+            $tour = new Tournee();
+            $tour->set_id($res['id']);
+            $tour->set_date($res['date']);
+            $tour->set_id_agent($res['id_agent']);
+            return $tour;
+        }
+        return false;
+    }
+
     public function getAll()
     {
         $res = $this->dbquery("SELECT * FROM `tournee`;");
