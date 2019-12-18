@@ -101,9 +101,9 @@ class           MReleve extends BDD
         $this->dbquery("UPDATE `releve` SET `status` = '" . $releve->get_status() . "', `date` = '" . $releve->get_date() . "', `niveau` = '" . $releve->get_niveau() . "', `commentaire` = '" . $releve->get_commentaire() . "', `id_tournee` = '" . $releve->get_id_tournee() . "', `id_pav` = '" . $releve->get_id_pav() . "' WHERE `releve`.`id` = '" . $releve->get_id() . "';");
     }
 
-    public function deleteByPavId($pav, $releve)
+    public function deleteByPavId($pav, $tournee)
     {
-        $this->dbquery("DELETE FROM `releve` WHERE `releve`.`id_pav` = " . $pav->get_id() . " AND `releve`.`id` = " . $releve->get_id() . ";");
+        $this->dbquery("DELETE FROM `releve` WHERE `releve`.`id_pav` = '" . $pav->get_id() . "' AND `releve`.`id_tournee` = '" . $tournee->get_id() . "';");
     }
 
     public function delete($releve)
