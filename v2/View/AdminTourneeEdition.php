@@ -1,6 +1,7 @@
 <?php
 $title = "PAV - Tournée";
 ob_start();
+var_dump($_POST);
 ?>
 Tournée - Edition
 
@@ -23,10 +24,11 @@ Tournée - Edition
             echo '<option value="'.$tournee->get_id().'">'.$tournee->get_id()." - ".$tournee->get_date()."</option>";
         } ?>
         </select>
+        <input type="hidden" id="id" name="id" require value="<?= $tournee->get_id()?>">
         <button type="submit">Editer</button>
     </div>    
     </form>
-
+<br>
     <?php } else if (isset($tournee) && isset($currentAgent) && isset($pavList) && isset($pavTourneeList)) {?>
      
      
@@ -37,9 +39,7 @@ Tournée - Edition
 
         <label for="date"> Date de la Tournée</label>
         <input type="date" id="date" name="date" value ="<?=$tournee->get_date() ?>">
-<?php         var_dump($agentList);
-        echo "-----";
-?>        
+ <br>
         <select name="id_agent">
         <?php 
         foreach ($agentList as $agent){
@@ -52,8 +52,13 @@ Tournée - Edition
         <button type="submit" href="?page=editiontournee">Modifier</button>
 </form>
     </div>
+     <br>
      
-     
+<div>
+
+</div>
+
+
      
         <div>
         <form action="?page=editiontournee" method="post">
@@ -64,9 +69,10 @@ Tournée - Edition
             echo '<option value="'.$pav->get_id().'">'.$pav->get_numero()." ".$pav->get_adresse()." ".$pav->get_code_postal()." ".$pav->get_ville()."</option>";
         } ?>
         </select>
+        <input type="hidden" id="id" name="id" require value="<?= $pav->get_id()?>">
         <button type="submit">Ajouter à la tournée</button>
     </div>
-
+<br>
 
    
     
