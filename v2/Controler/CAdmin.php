@@ -107,7 +107,7 @@ class       CAdmin
         $tour = $stour->getTour();
         if($tour != false){
             $tournee = $tour;
-            $agent = $magent->getById($tournee->get_id_agent());
+            $currentAgent = $magent->getById($tournee->get_id_agent());
             $pavList = $mpav->getAll();
             $pavTourneeList = $stour->getPavTourList($tournee);
         } else {
