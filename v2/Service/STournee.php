@@ -61,9 +61,6 @@ class       STournee
             $mreleve = new MReleve();
             $releve = new Releve();
             $releve->set_status('w');
-            $releve->set_date('');
-            $releve->set_niveau('');
-            $releve->set_commentaire('');
             $releve->set_id_tournee($_POST['id']);
             $releve->set_id_pav($_POST['id_pav']);
             $mreleve->create($releve);
