@@ -9,6 +9,8 @@ class       CAdmin
 
     public function vueGlobale()
     {
+        $spav = new SPav();
+        $pavList = $spav->getPavList();
         require("View/AdminVueGlobale.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
