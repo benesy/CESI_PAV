@@ -123,6 +123,13 @@ class       CAdmin
 
     public function roundDelete()
     {
+        $stour = new STournee();
+        $tour = $stour->getTour();
+        if ($tour != false){
+            $stour->delTour();
+        } else {
+            $tourneeList = $stour->getTourList();
+        }
         require("View/AdminTourneeSupression.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
