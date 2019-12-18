@@ -127,6 +127,7 @@ class       CAdmin
         $tour = $stour->getTour();
         if ($tour != false){
             $stour->delTour();
+            $validate = true;
         } else {
             $tourneeList = $stour->getTourList();
         }
