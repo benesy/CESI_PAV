@@ -69,7 +69,7 @@ class           MReleve extends BDD{
 
     public function create($releve)
     {
-        $this->dbquery("INSERT INTO `releve` (`id`, `status`, `date`, `niveau`, `commentaire`, `id_tournee`, `id_pav`) VALUES (NULL, '".$releve->get_status()."', '".$releve->get_date()."', '".$releve->get_niveau()."', '".$releve->get_commentaire()."', '".$releve->get_id_tournee()."', '".$releve->get_id_pav()."');");
+        $this->dbquery("INSERT INTO `releve` (`id`, `status`, `date`, `niveau`, `commentaire`, `id_tournee`, `id_pav`) VALUES (NULL, '".$releve->get_status()."', NULL, NULL, NULL, '".$releve->get_id_tournee()."', '".$releve->get_id_pav()."');");
         $res = $this->dbquery("SELECT * FROM `releve` WHERE `id` = LAST_INSERT_ID();");
         $res = $res->fetchAll();
         if (isset($res[0]['id'])) {
