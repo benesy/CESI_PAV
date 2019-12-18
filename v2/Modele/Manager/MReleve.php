@@ -23,6 +23,28 @@ class           MReleve extends BDD{
         return false;
     }
 
+    public function getAllByIdTournee($id_tournee)
+    {
+        $res = $this->dbquery("SELECT * FROM `releve` WHERE `id_tournee` = '".$id_tournee."';");
+        $res = $res->fetchAll();
+        if (isset($res[0]['id'])) {
+            $listReleve = array();
+            foreach ($res as $dbRe) {
+                $releve = new Releve();
+                $releve->set_id($dbRe['id']);
+                $releve->set_status($dbRe['status']);
+                $releve->set_date($dbRe['date']);
+                $releve->set_niveau($dbRe['niveau']);
+                $releve->set_commentaire($dbRe['commentaire']);
+                $releve->set_id_tournee($dbRe['id_tournee']);
+                $releve->set_id_pav($dbRe['id_pav']);
+                array_push($listReleve, $releve);
+            }
+            return $listReleve;
+        }
+        return false;
+    }
+
     public function getAll()
     {
         $res = $this->dbquery("SELECT * FROM `releve`;");
