@@ -104,8 +104,8 @@ class       CAdmin
         $stour = new STournee();
         $magent = new MAgent();
         $mpav = new MPav();
-        $tour = $stour->getTour();
         $stour->editTour();
+        $tour = $stour->getTour();
         if($tour != false){
             $tournee = $tour;
             $agentList = $magent->getAll();
