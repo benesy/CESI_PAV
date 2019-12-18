@@ -16,6 +16,16 @@ class       STournee
         return false;
     }
 
+    private function    checkForm2()
+    {
+        if (
+            isset($_POST['pav']) && !empty($_POST['pav'])
+        ) {
+            return true;
+        }
+        return false;
+    }
+
     private function checkIDTour()
     {
         if (isset($_POST['id']) && !empty($_POST['id'])) {
@@ -39,20 +49,47 @@ class       STournee
 
     public function editTour()
     {
-
-        return true;
+        if ($this->checkIDTour() && $this->checkForm1()) {
+            $mtour = new MTournee();
+            $tour = new Tournee();
+            $tour->set_id($_POST['id']);
+            $tour->set_id_agent($_POST['id_agent']);
+            $tour->set_date($_POST['date']);
+            $mtour->update($tour);
+            return true;
+        } else if ($this->checkIDTour() && $this->checkForm2()) {
+            $mreleve = new MReleve();
+            $releve = new Releve();
+            $releve->set_status('w');
+            $releve->set_date('');
+            $releve->set_niveau('');
+            $releve->set_commentaire('');
+            $releve->set_id_tournee($_POST['id']);
+            $releve->set_id_pav($_POST['id_pav']);
+            $mreleve->create($releve);
+            return true;
+        }
         return false;
     }
 
     public function deletPav()
     {
-        return true;
+        //todo
+        if ($this->checkIDTour()) {
+            $pav = new Pav();
+            $pav->set_id($_POST['id_pav']);
+            $tour = new Tournee();
+            $tour->set_id($_POST['id']);
+            $mreleve = new MReleve();
+            $mreleve->deleteByPavId($pav, $tour);
+            return true;
+        }
         return false;
     }
 
     public function getTour()
     {
-        if ($this->checkIDTour()){
+        if ($this->checkIDTour()) {
             $mtour = new MTournee();
             return $mtour->getById($_POST['id']);
         }
@@ -65,8 +102,8 @@ class       STournee
         $mreleve = new MReleve();
         $mpav = new MPav();
         $releveList = $mreleve->getAllByIdTournee($tournee->get_id());
-        if ($releveList != false){
-            foreach ($releveList as $releve){
+        if ($releveList != false) {
+            foreach ($releveList as $releve) {
                 array_push($pavList, $mpav->getById($releve->get_id_pav()));
             }
         }
