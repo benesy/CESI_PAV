@@ -19,7 +19,7 @@ class       STournee
     private function    checkForm2()
     {
         if (
-            isset($_POST['pav']) && !empty($_POST['pav'])
+            isset($_POST['id_pav']) && !empty($_POST['id_pav'])
         ) {
             return true;
         }
