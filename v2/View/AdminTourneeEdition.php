@@ -11,21 +11,23 @@ Tournée - Edition
     <a href="?page=editiontournee"><input type="button" value="retour"></a>
 </div>
 
-    <?php } else if (isset($tourneeList)){?>
+    <?php } else if (isset($tourneeList)){;
+?>
         <div>
         <form action="?page=editiontournee" method="post">
-    
         <select name="id">
-        <?php 
+        <?php
+        
         foreach ($tourneeList as $tournee){
-            echo '<option value="'.$tournee->get_id().'">'.$tournee->get_agent()." ".$tournee->get_date()."</option>";
+
+            echo '<option value="'.$tournee->get_id().'">'.$tournee->get_id()." - ".$tournee->get_date()."</option>";
         } ?>
         </select>
         <button type="submit">Editer</button>
     </div>    
     </form>
 
-    <?php } else if (isset($tournee) && isset($agent) && isset($pavList) && isset($pavTourneeList)) {?>
+    <?php } else if (isset($tournee) && isset($currentAgent) && isset($pavList) && isset($pavTourneeList)) {?>
      
      
         <div>
@@ -35,7 +37,9 @@ Tournée - Edition
 
         <label for="date"> Date de la Tournée</label>
         <input type="date" id="date" name="date" value ="<?=$tournee->get_date() ?>">
-        
+<?php         var_dump($agentList);
+        echo "-----";
+?>        
         <select name="id_agent">
         <?php 
         foreach ($agentList as $agent){
