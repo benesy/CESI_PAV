@@ -1,5 +1,6 @@
 <?php
 require_once("Modele/Manager/MTournee.php");
+require_once("Modele/Manager/MReleve.php");
 
 class       STournee
 {
