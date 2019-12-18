@@ -1,17 +1,21 @@
 <?php
 
+require_once("Service/STournee.php");
 require_once("Service/SAgent.php");
 require_once("Service/SPav.php");
 
-class       CAdmin{
+class       CAdmin
+{
 
-    public function vueGlobale(){
+    public function vueGlobale()
+    {
         require("View/AdminVueGlobale.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
     }
 
-    public function agentCreate(){
+    public function agentCreate()
+    {
         $sagent = new SAgent();
         if ($sagent->createAgent())
             $validate = true;
@@ -20,10 +24,11 @@ class       CAdmin{
         require("View/Template.php");
     }
 
-    public function agentEdit(){
+    public function agentEdit()
+    {
         $sagent = new SAgent();
         $validate = $sagent->editAgent();
-        if (!$validate){
+        if (!$validate) {
             $agent = $sagent->getAgent();
             if (!$agent)
                 $agentList = $sagent->getAgentList();
@@ -33,7 +38,8 @@ class       CAdmin{
         require("View/Template.php");
     }
 
-    public function agentDelete(){
+    public function agentDelete()
+    {
         $sagent = new SAgent();
         $validate = $sagent->deletAgent();
         if (!$validate)
@@ -43,7 +49,8 @@ class       CAdmin{
         require("View/Template.php");
     }
 
-    public function pavCreate(){
+    public function pavCreate()
+    {
         $spav = new SPav();
         if ($spav->createPav())
             $validate = true;
@@ -52,10 +59,11 @@ class       CAdmin{
         require("View/Template.php");
     }
 
-    public function pavEdit(){
+    public function pavEdit()
+    {
         $spav = new SPav();
         $validate = $spav->editPav();
-        if (!$validate){
+        if (!$validate) {
             $pav = $spav->getPav();
             if (!$pav)
                 $pavList = $spav->getPavList();
@@ -65,7 +73,8 @@ class       CAdmin{
         require("View/Template.php");
     }
 
-    public function pavDelete(){
+    public function pavDelete()
+    {
         $spav = new SPav();
         $validate = $spav->deletPav();
         if (!$validate)
@@ -75,22 +84,32 @@ class       CAdmin{
         require("View/Template.php");
     }
 
-    public function roundCreate(){
+    public function roundCreate()
+    {
+        $stour = new STournee();
+        $tournee = $stour->createTour();
+        if ($tournee != false) {
+            $validate = true;
+        } else { 
+            $magent = new MAgent();
+            $agentList = $magent->getAll();
+        }
         require("View/AdminTourneeCreation.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
     }
 
-    public function roundEdit(){
+    public function roundEdit()
+    {
         require("View/AdminTourneeEdition.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
     }
 
-    public function roundDelete(){
+    public function roundDelete()
+    {
         require("View/AdminTourneeSupression.php");
         require("View/AdminMenu.php");
         require("View/Template.php");
     }
-
 }
