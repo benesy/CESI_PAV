@@ -3,7 +3,7 @@ $title = "PAV - Tournée";
 ob_start();
 ?>
 Vue globale
-
+<?php if (isset($pavList){?>
 <table>
 <tr>
     <th>Id Pav</th>
@@ -15,11 +15,11 @@ Vue globale
     <th>Commentaire</th>
 </tr>
 <?php 
-foreach ($pavTourneeList as $pav) {
+foreach ($pavList as $pav) {
  echo '<tr>';
 echo '<td>'.$pav->get_id() . '</td>';
-echo '<td>'.$pav->get_numero() . '</td>';
-echo '<td>'.$pav->get_adresse() . '</td>';
+echo '<td>'.$pav->get_date() . '</td>';
+echo '<td>'.$pav->get_id_agent() . '</td>';
 echo '<td>'.$pav->get_code_postal() . '</td>';
 echo '<td>'.$pav->get_ville() . '</td>';
 echo '<td>'.$pav->get_niveau() . '</td>';
