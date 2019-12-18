@@ -63,8 +63,11 @@ class       STournee
             $releve->set_status('w');
             $releve->set_id_tournee($_POST['id']);
             $releve->set_id_pav($_POST['id_pav']);
-            $mreleve->create($releve);
-            return true;
+            if (!$mreleve->getByPavTourneeID($releve->get_id_pav(), $releve->get_id_tournee())) {
+                $mreleve->create($releve);
+                return true;
+            }
+            return false;
         }
         return false;
     }
@@ -107,7 +110,8 @@ class       STournee
         return $pavList;
     }
 
-    public function delTour(){
+    public function delTour()
+    {
         $mtour = new MTournee();
         $tour = new Tournee();
         $tour->set_id($_POST['id']);

@@ -2,7 +2,8 @@
 require_once("Modele/Manager/BDD.php");
 require_once("Modele/Releve.php");
 
-class           MReleve extends BDD{
+class           MReleve extends BDD
+{
 
     public function getById($id)
     {
@@ -23,9 +24,18 @@ class           MReleve extends BDD{
         return false;
     }
 
+    public function getByPavTourneeID($pav, $tournee)
+    {
+        $res = $this->dbquery("SELECT * FROM `releve` WHERE `id_pav` = '" . $pav->get_id() . "' AND `id_tournee` = '" . $tournee->get_id() . "' ;");
+        $res = $res->fetchAll();
+        if (isset($res[0]['id']))
+            return $res;
+        return false;
+    }
+
     public function getAllByIdTournee($id_tournee)
     {
-        $res = $this->dbquery("SELECT * FROM `releve` WHERE `id_tournee` = '".$id_tournee."';");
+        $res = $this->dbquery("SELECT * FROM `releve` WHERE `id_tournee` = '" . $id_tournee . "';");
         $res = $res->fetchAll();
         if (isset($res[0]['id'])) {
             $listReleve = array();
@@ -69,7 +79,7 @@ class           MReleve extends BDD{
 
     public function create($releve)
     {
-        $this->dbquery("INSERT INTO `releve` (`id`, `status`, `date`, `niveau`, `commentaire`, `id_tournee`, `id_pav`) VALUES (NULL, '".$releve->get_status()."', NULL, NULL, NULL, '".$releve->get_id_tournee()."', '".$releve->get_id_pav()."');");
+        $this->dbquery("INSERT INTO `releve` (`id`, `status`, `date`, `niveau`, `commentaire`, `id_tournee`, `id_pav`) VALUES (NULL, '" . $releve->get_status() . "', NULL, NULL, NULL, '" . $releve->get_id_tournee() . "', '" . $releve->get_id_pav() . "');");
         $res = $this->dbquery("SELECT * FROM `releve` WHERE `id` = LAST_INSERT_ID();");
         $res = $res->fetchAll();
         if (isset($res[0]['id'])) {
@@ -88,7 +98,7 @@ class           MReleve extends BDD{
 
     public function update($releve)
     {
-        $this->dbquery("UPDATE `releve` SET `status` = '".$releve->get_status()."', `date` = '".$releve->get_date()."', `niveau` = '".$releve->get_niveau()."', `commentaire` = '".$releve->get_commentaire()."', `id_tournee` = '".$releve->get_id_tournee()."', `id_pav` = '".$releve->get_id_pav()."' WHERE `releve`.`id` = '".$releve->get_id()."';");
+        $this->dbquery("UPDATE `releve` SET `status` = '" . $releve->get_status() . "', `date` = '" . $releve->get_date() . "', `niveau` = '" . $releve->get_niveau() . "', `commentaire` = '" . $releve->get_commentaire() . "', `id_tournee` = '" . $releve->get_id_tournee() . "', `id_pav` = '" . $releve->get_id_pav() . "' WHERE `releve`.`id` = '" . $releve->get_id() . "';");
     }
 
     public function deleteByPavId($pav, $tournee)
@@ -100,5 +110,4 @@ class           MReleve extends BDD{
     {
         $this->dbquery("DELETE FROM `releve` WHERE `releve`.`id` = " . $releve->get_id() . ";");
     }
-    
 }
