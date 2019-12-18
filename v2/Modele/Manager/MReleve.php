@@ -26,7 +26,7 @@ class           MReleve extends BDD
 
     public function getByPavTourneeID($pav, $tournee)
     {
-        $res = $this->dbquery("SELECT * FROM `releve` WHERE `id_pav` = '" . $pav->get_id() . "' AND `id_tournee` = '" . $tournee . "' ;");
+        $res = $this->dbquery("SELECT * FROM `releve` WHERE `id_pav` = '" . $pav . "' AND `id_tournee` = '" . $tournee . "' ;");
         $res = $res->fetchAll();
         if (isset($res[0]['id']))
             return $res;
