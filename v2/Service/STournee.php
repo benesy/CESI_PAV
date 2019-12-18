@@ -107,6 +107,13 @@ class       STournee
         return $pavList;
     }
 
+    public function delTour(){
+        $mtour = new MTournee();
+        $tour = new Tournee();
+        $tour->set_id($_POST['id']);
+        $mtour->delete($tour);
+    }
+
     public function getTourList()
     {
         $mtour = new MTournee();
