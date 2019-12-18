@@ -71,14 +71,14 @@ class       STournee
 
     public function deletPav()
     {
-        //todo
-        if ($this->checkIDTour()) {
+        if (isset($_GET['id_tournee']) && isset($_GET['id_pav'])) {
             $pav = new Pav();
-            $pav->set_id($_POST['id_pav']);
+            $pav->set_id($_GET['id_pav']);
             $tour = new Tournee();
-            $tour->set_id($_POST['id']);
+            $tour->set_id($_GET['id_tournee']);
             $mreleve = new MReleve();
             $mreleve->deleteByPavId($pav, $tour);
+            $_POST['id'] = $tour->get_id();
             return true;
         }
         return false;
