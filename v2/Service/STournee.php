@@ -65,8 +65,10 @@ class       STournee
         $mreleve = new MReleve();
         $mpav = new MPav();
         $releveList = $mreleve->getAllByIdTournee($tournee->get_id());
-        foreach ($releveList as $releve){
-            array_push($pavList, $mpav->getById($releve->get_id_pav()));
+        if ($releveList != false){
+            foreach ($releveList as $releve){
+                array_push($pavList, $mpav->getById($releve->get_id_pav()));
+            }
         }
         return $pavList;
     }
