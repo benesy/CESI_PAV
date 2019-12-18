@@ -22,8 +22,8 @@ echo '<td>'.$pav->get_numero() . '</td>';
 echo '<td>'.$pav->get_adresse() . '</td>';
 echo '<td>'.$pav->get_code_postal() . '</td>';
 echo '<td>'.$pav->get_ville() . '</td>';
-echo '<td>'.$pav->get_niveau() . '</td>';
-echo '<td>'.$pav->get_commentaire() . '</td>';
+//echo '<td>'.$pav->get_niveau() . '</td>';
+//echo '<td>'.$pav->get_commentaire() . '</td>';
 
 
 echo '</tr>';
