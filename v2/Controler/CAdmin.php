@@ -101,6 +101,18 @@ class       CAdmin
 
     public function roundEdit()
     {
+        $stour = new STournee();
+        $magent = new MAgent();
+        $mpav = new MPav();
+        $tour = $stour->getTour();
+        if($tour != false){
+            $tournee = $tour;
+            $agent = $magent->getById($tournee->get_id_agent());
+            $pavList = $mpav->getAll();
+            $pavTourneeList = $stour->getPavTourList($tournee);
+        } else {
+            $tourneeList = $stour->getTourList();
+        }
         require("View/AdminTourneeEdition.php");
         require("View/AdminMenu.php");
         require("View/Template.php");

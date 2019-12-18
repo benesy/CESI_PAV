@@ -49,14 +49,30 @@ class       STournee
         return false;
     }
 
-    public function getPav()
+    public function getTour()
     {
+        if ($this->checkIDTour()){
+            $mtour = new MTournee();
+            return $mtour->getById($_POST['id']);
+        }
         return false;
+    }
+
+    public function getPavTourList($tournee)
+    {
+        $pavList = array();
+        $mreleve = new MReleve();
+        $mpav = new MPav();
+        $releveList = $mreleve->getAllByIdTournee($tournee->get_id());
+        foreach ($releveList as $releve){
+            array_push($pavList, $mpav->getById($releve->get_id_pav()));
+        }
+        return $pavList;
     }
 
     public function getTourList()
     {
-        $mpav = new MPav();
-        return $mpav->getAll();
+        $mtour = new MTournee();
+        return $mtour->getAll();
     }
 }
