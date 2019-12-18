@@ -235,10 +235,10 @@ $tournee = $MTournee->create($tournee);
 $releve = new Releve();
 $MReleve = new MReleve();
 
-$releve->set_date("2019-12-16");
+$releve->set_date("");
 $releve->set_status("0");
-$releve->set_niveau("3");
-$releve->set_commentaire("blablabla");
+$releve->set_niveau("");
+$releve->set_commentaire("");
 $releve->set_id_tournee($tournee->get_id());
 $releve->set_id_pav($pav->get_id());
 

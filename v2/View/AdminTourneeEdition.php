@@ -69,12 +69,38 @@ Tournée - Edition
             echo '<option value="'.$pav->get_id().'">'.$pav->get_numero()." ".$pav->get_adresse()." ".$pav->get_code_postal()." ".$pav->get_ville()."</option>";
         } ?>
         </select>
-        <input type="hidden" id="id" name="id" require value="<?= $pav->get_id()?>">
+        <input type="hidden" id="id" name="id" require value="<?= $tournee->get_id()?>">
         <button type="submit">Ajouter à la tournée</button>
     </div>
 <br>
 
-   
+<table>
+
+<tr>
+    <th>Id Pav</th>
+    <th>Numero voie</th>
+    <th>Adresse</th>
+    <th>Code Postal</th>
+    <th>Ville</th>
+    <th>Suppression</th>
+</tr>
+<?php 
+foreach ($pavTourneeList as $pav) {
+ echo '<tr>';
+echo '<td>'.$pav->get_id() . '</td>';
+echo '<td>'.$pav->get_numero() . '</td>';
+echo '<td>'.$pav->get_adresse() . '</td>';
+echo '<td>'.$pav->get_code_postal() . '</td>';
+echo '<td>'.$pav->get_ville() . '</td>';
+$lien = "?page=editiontournee&id_tournee=".$tournee->get_id();"&id_pav=".$pav->get_id();
+echo '<td><a href="'.$lien.'"Suppression</td>';
+
+echo '</tr>';
+}
+?>
+    </table>
+
+
     
 
 
