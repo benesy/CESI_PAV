@@ -14,7 +14,8 @@ class CAgent
             $pavList = $mpav->getAll();
             if (!$releveList)
                 $noTournee = true;
-        }
+        } else
+            $noTournee = true;
         require("View/AgentPavList.php");
         require("View/AgentMenu.php");
         require("View/Template.php");
