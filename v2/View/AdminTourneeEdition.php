@@ -14,9 +14,10 @@ Tournée - Edition
 
     <?php } else if (isset($tourneeList)){;
 ?>
-        <div>
+        
         <form action="?page=editiontournee" method="post">
-        <select name="id">
+        <div class="form-group">
+        <select name="id" class="form-control">
         <?php
         
         foreach ($tourneeList as $tournee){
@@ -25,22 +26,22 @@ Tournée - Edition
         } ?>
         </select>
         
-        <button type="submit">Editer</button>
+        <button type="submit" class="form-control">Editer</button>
     </div>    
     </form>
 <br>
     <?php } else if (isset($tournee) && isset($currentAgent) && isset($pavList) && isset($pavTourneeList)) {?>
      
      
-        <div>
-        <form action="?page=editiontournee" method="post">
         
+        <form action="?page=editiontournee" method="post">
+        <div class="form-group">
         <input type="hidden" id="id" name="id" require value="<?= $tournee->get_id()?>">
 
         <label for="date"> Date de la Tournée</label>
-        <input type="date" id="date" name="date" value ="<?=$tournee->get_date() ?>">
+        <input type="date" class="form-control" id="date" name="date" value ="<?=$tournee->get_date() ?>">
  <br>
-        <select name="id_agent">
+        <select name="id_agent" class="form-control">
         <?php 
         foreach ($agentList as $agent){
             if ($currentAgent->get_id() == $agent->get_id())
@@ -49,7 +50,7 @@ Tournée - Edition
             echo '<option value="'.$agent->get_id().'">'.$agent->get_login()." ".$agent->get_nom()." ".$agent->get_prenom().'</option>';
         } ?>
         </select>
-        <button type="submit" href="?page=editiontournee">Modifier</button>
+        <button type="submit" class="form-control" href="?page=editiontournee">Modifier</button>
 </form>
     </div>
      <br>
@@ -60,17 +61,17 @@ Tournée - Edition
 
 
      
-        <div>
+        
         <form action="?page=editiontournee" method="post">
-    
-        <select name="id_pav">
+        <div class="form-group">
+        <select name="id_pav" class="form-control">
         <?php 
         foreach ($pavList as $pav){
             echo '<option value="'.$pav->get_id().'">'.$pav->get_numero()." ".$pav->get_adresse()." ".$pav->get_code_postal()." ".$pav->get_ville()."</option>";
         } ?>
         </select>
         <input type="hidden" id="id" name="id" require value="<?= $tournee->get_id()?>">
-        <button type="submit">Ajouter à la tournée</button>
+        <button type="submit" class="form-control">Ajouter à la tournée</button>
     </div>
 <br>
 
