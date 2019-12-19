@@ -1,9 +1,9 @@
 <?php ob_start(); ?>
-<li>
-    <a href="?page=pavlist">Tournée du jour</a>
+<li class="nav-item">
+    <a class="nav-link" href="?page=pavlist">Tournée du jour</a>
 </li>
-<li>
-    <a href="?page=disconnect">Deconnection</a>
+<li class="nav-item">
+    <a class="nav-link" href="?page=disconnect">Deconnection</a>
 </li>
 
 <?php

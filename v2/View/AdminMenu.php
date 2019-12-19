@@ -1,33 +1,33 @@
 <?php ob_start(); ?>
-<li>
-    <a href="?page=global">Vue Globale</a>
+<li class="nav-item">
+    <a class="nav-link" href="?page=global">Vue Globale</a>
 </li>
-<li>
-    <a href="#">Agent</a>
-    <div>
-        <a href="?page=creationagent">Création</a>
-        <a href="?page=editionagent">Edition</a>
-        <a href="?page=suppragent">Supression</a>
+<li class="nav-item">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Agent</a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="?page=creationagent">Création</a>
+        <a class="dropdown-item" href="?page=editionagent">Edition</a>
+        <a class="dropdown-item" href="?page=suppragent">Supression</a>
     </div>
 </li>
-<li>
-    <a href="#">PAV</a>
-    <div>
-        <a href="?page=creationpav">Création</a>
-        <a href="?page=editionpav">Edition</a>
-        <a href="?page=supprpav">Supression</a>
+<li class="nav-item">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">PAV</a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="?page=creationpav">Création</a>
+        <a class="dropdown-item" href="?page=editionpav">Edition</a>
+        <a class="dropdown-item" href="?page=supprpav">Supression</a>
     </div>
 </li>
-<li>
-    <a href="#">Tournée</a>
-    <div>
-        <a href="?page=creationtournee">Création</a>
-        <a href="?page=editiontournee">Edition</a>
-        <a href="?page=supprtournee">Supression</a>
+<li class="nav-item">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tournée</a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="?page=creationtournee">Création</a>
+        <a class="dropdown-item" href="?page=editiontournee">Edition</a>
+        <a class="dropdown-item" href="?page=supprtournee">Supression</a>
     </div>
 </li>
-<li>
-    <a href="?page=disconnect">Deconnection</a>
+<li class="nav-item">
+    <a class="nav-link" href="?page=disconnect">Deconnection</a>
 </li>
 
 <?php
