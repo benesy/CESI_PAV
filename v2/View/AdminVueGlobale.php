@@ -7,26 +7,29 @@ Vue globale
 <table>
 <tr>
     <th>Id Pav</th>
-    <th>Numero voie</th>
+    <th>Date Dernier Relevé</th>
+    <th>Niveau</th>
+    <th>Commentaire Postal</th>
+    <th>Numero</th>
     <th>Adresse</th>
-    <th>Code Postal</th>
+    <th>CP</th>
     <th>Ville</th>
-    <th>Niveau de remplissage</th>
-    <th>Commentaire</th>
 </tr>
 <?php 
+if ($pavList != false) {
 foreach ($pavList as $pav) {
  echo '<tr>';
-echo '<td>'.$pav->get_id() . '</td>';
-echo '<td>'.$pav->get_numero() . '</td>';
-echo '<td>'.$pav->get_adresse() . '</td>';
-echo '<td>'.$pav->get_code_postal() . '</td>';
-echo '<td>'.$pav->get_ville() . '</td>';
-//echo '<td>'.$pav->get_niveau() . '</td>';
-//echo '<td>'.$pav->get_commentaire() . '</td>';
-
+echo '<td>'.$pav['id'] . '</td>';
+echo '<td>'.$pav['date'] . '</td>';
+echo '<td>'.$pav['niveau'] . '</td>';
+echo '<td>'.$pav['commentaire'] . '</td>';
+echo '<td>'.$pav['numero'] . '</td>';
+echo '<td>'.$pav['adresse'] . '</td>';
+echo '<td>'.$pav['code_postal'] . '</td>';
+echo '<td>'.$pav['ville'] . '</td>';
 
 echo '</tr>';
+}
 }
 ?>
     </table>
