@@ -7,12 +7,12 @@ ob_start();
 <?php if (isset($noTournee)){
 echo "Pas de tournée prevue aujourd'hui.";
 } else {?>
-    <table>
+    <table class="table table-striped">
     <tr>
-        <th>Status</th>
-        <th>Numero relevé</th>
-        <th>Adresse</th>
-        <th>Relever</th>
+        <th scope="col">Status</th>
+        <th scope="col">Numero relevé</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Relever</th>
     </tr>
     <?php
         foreach ($releveList as $releve) {

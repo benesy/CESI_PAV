@@ -74,7 +74,7 @@ Tournée - Edition
     </div>
 <br>
 
-<table>
+<table class="table table-striped">
 
 <tr>
     <th>Id Pav</th>

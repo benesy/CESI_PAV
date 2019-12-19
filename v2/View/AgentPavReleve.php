@@ -3,7 +3,7 @@ $title = "PAV - Relevé";
 $menu = '<li><a href="?page=disconnect">Deconnection</a></li>';
 ob_start();
 ?>
-Agent relevé pav
+<h2>Agent relevé pav</h2>
 <div>
     <form action="?page=pavreleve" method="post">
         <input type="hidden" name ="id" value="<?= $releve->get_id() ?>">

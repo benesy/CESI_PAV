@@ -4,16 +4,16 @@ ob_start();
 ?>
 Vue globale
 <?php if (isset($pavList)){?>
-<table>
+<table class="table table-striped">
 <tr>
-    <th>Id Pav</th>
-    <th>Date Dernier Relevé</th>
-    <th>Niveau</th>
-    <th>Commentaire</th>
-    <th>Numero</th>
-    <th>Adresse</th>
-    <th>CP</th>
-    <th>Ville</th>
+    <th scope="col">Id Pav</th>
+    <th scope="col">Date Dernier Relevé</th>
+    <th scope="col">Niveau</th>
+    <th scope="col">Commentaire</th>
+    <th scope="col">Numero</th>
+    <th scope="col">Adresse</th>
+    <th scope="col">CP</th>
+    <th scope="col">Ville</th>
 </tr>
 <?php 
 if ($pavList != false) {

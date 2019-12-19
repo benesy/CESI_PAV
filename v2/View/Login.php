@@ -4,19 +4,19 @@ ob_start();
 ?>
 <div>
     <form action="#" method="post">
-        <div>
+        <div class="form-group">
             <label for="login"> Login</label>
-            <input type="text" id="log" name="login" value="<?php if (isset($connectionLogin)) echo $connectionLogin; ?>">
+            <input type="text" class="form-control" id="log" name="login" value="<?php if (isset($connectionLogin)) echo $connectionLogin; ?>">
         </div>
-        <div>
+        <div class="form-group">
             <label for="pwd"> Mot de passe</label>
-            <input type="password" id="password" name="pwd">
+            <input class="form-control" type="password" id="password" name="pwd">
         </div>
         <?php
         if (isset($erreurPwd) && $erreurPwd)
             echo "<span>Login ou mdp incorrect</span>"
             ?>
-        <button type="submit">Connexion</button>
+        <button class="btn btn-primary" type="submit">Connexion</button>
     </form>
 </div>
 <?php
