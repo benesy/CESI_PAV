@@ -29,7 +29,7 @@ echo "Pas de tournée prevue aujourd'hui.";
                         </td>
                         <td><?= $releve->get_id() ?></td>
                         <td><?= $pav->get_numero() . " " . $pav->get_adresse() . " " . $pav->get_code_postal() . " " . $pav->get_ville() ?></td>
-                        <td><a href="<?= $link ?>">Relever</a></td>
+                        <td><a class="btn btn-primary" href="<?= $link ?>">Relever</a></td>
                     </tr><?php
                                         }
                                     }

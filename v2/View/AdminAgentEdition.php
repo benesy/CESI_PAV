@@ -11,37 +11,39 @@ ob_start();
 
 <?php } else if (isset($agentList)){?>
     <form action="?page=editionagent" method="post">
-        <select name="id">
+    <div class="form-group">    
+    <select class="form-control" name="id">
         <?php 
         foreach ($agentList as $agent){
             echo '<option value="'.$agent->get_id().'">'.$agent->get_login()." ".$agent->get_nom()." ".$agent->get_prenom().'</option>';
         } ?>
         </select>
-        <button type="submit" href="?page=editionagent">Editer</button>
+    </div>
+        <button class="btn btn-primary" type="submit" href="?page=editionagent">Editer</button>
 </form>
 <?php } else { ?>
     
     
     <form action="?page=editionagent" method="post">
-        <div>
+        <div class="form-group">
             <label for="nom"> Nom</label>
-            <input type="text" id="nom" name="nom" require value="<?= $agent->get_nom()?>">
+            <input class="form-control" type="text" id="nom" name="nom" require value="<?= $agent->get_nom()?>">
         </div>
-        <div>
+        <div class="form-group">
             <label for="prenom"> Prénom</label>
-            <input type="text" id="prenom" name="prenom" require value="<?= $agent->get_prenom()?>">
+            <input class="form-control" type="text" id="prenom" name="prenom" require value="<?= $agent->get_prenom()?>">
         </div>
-        <div>
+        <div class="form-group">
             <label for="login"> Login</label>
-            <input type="text" id="login" name="login" require value="<?= $agent->get_login()?>">
+            <input class="form-control" type="text" id="login" name="login" require value="<?= $agent->get_login()?>">
         </div>
-        <div>
+        <div class="form-group">
             <label for="password"> Mot de passe</label>
-            <input type="password" id="password" name="password" require >
+            <input class="form-control" type="password" id="password" name="password" require >
             <input type="hidden" id="id" name="id" require value="<?= $agent->get_id()?>">
         </div>
         
-        <button type="submit">Envoi</button>
+        <button class="btn btn-primary" type="submit">Envoi</button>
     </form>
 <?php } ?>
 <?php

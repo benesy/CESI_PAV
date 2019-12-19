@@ -10,13 +10,15 @@ ob_start();
 
 <?php } else if (isset($agentList)) { ?>
     <form action="?page=suppragent" method="post">
-        <select name="id">
+    <div class="form-group">
+    <select class="form-control" name="id">
         <?php 
         foreach ($agentList as $agent){
             echo '<option value="'.$agent->get_id().'">'.$agent->get_login()." ".$agent->get_nom()." ".$agent->get_prenom().'</option>';
         } ?>
         </select>
-        <button type="submit" href="?page=editionagent">Supprimer</button>
+        </div>
+        <button class="btn btn-primary" type="submit" href="?page=editionagent">Supprimer</button>
         
 </form>
 <?php }  ?>

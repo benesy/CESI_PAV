@@ -10,24 +10,24 @@ ob_start();
 
 <?php } else {?>
     <form action="?page=creationagent" method="post">
-        <div>
+        <div class="form-group">
             <label for="nom"> Nom</label>
-            <input type="text" id="nom" name="nom" require>
+            <input class="form-control" type="text" id="nom" name="nom" require>
         </div>
-        <div>
+        <div class="form-group">
             <label for="prenom"> Prénom</label>
-            <input type="text" id="prenom" name="prenom" require>
+            <input class="form-control" type="text" id="prenom" name="prenom" require>
         </div>
-        <div>
+        <div class="form-group">
             <label for="login"> Login</label>
-            <input type="text" id="login" name="login" require>
+            <input class="form-control" type="text" id="login" name="login" require>
         </div>
-        <div>
+        <div class="form-group">
             <label for="password"> Mot de passe</label>
-            <input type="password" id="password" name="password" require>
+            <input class="form-control" type="password" id="password" name="password" require>
         </div>
         
-        <button type="submit">Envoi</button>
+        <button class="btn btn-primary" type="submit">Envoi</button>
     </form>
 <?php } ?>
 <?php

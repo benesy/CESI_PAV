@@ -13,20 +13,20 @@
         <?php
             if (isset($_SESSION['prenom']) && isset($_SESSION['nom'])){
                 ?>
-                    <div>
+                    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
                         Bienvenue <?= $_SESSION['prenom'] ?> <?= $_SESSION['nom'] ?> !
-                    </div>
+            </nav>
                 <?php
             }
             else if (isset($_SESSION['user'])){
                 ?>
-                    <div>
+                    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
                        Bienvenue <?= $_SESSION['user'] ?> !
-                    </div>
+                    </nav>
                 <?php
             }
             if (isset($menu))
-                echo "<nav><ul class='nav nav-tabs'>".$menu."</ul></nav>";
+                echo "<nav><ul class='nav nav-tabs' style='background-color: #e3f2fd;'>".$menu."</ul></nav>";
             if (isset($content))
                 echo $content;
         ?>
