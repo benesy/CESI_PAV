@@ -18,6 +18,7 @@ class   Login
 
     function display($erreurPwd)
     {
+        $menu = '<span style="height:30px;"></span>';
         require('View/Login.php');
         require('View/Template.php');
     }
