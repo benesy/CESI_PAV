@@ -12,11 +12,11 @@ Agent relevé pav
         <div>
         <label for="niveau">Niveau</label>
         <select id="niveau" name="niveau">
-            <option value="0">0/4</option>
-            <option value="1">1/4</option>
-            <option value="2">2/4</option>
-            <option value="3">3/4</option>
-            <option value="4">4/4</option>
+            <option <?php if($releve->get_niveau() == 0) echo "selected"; ?> value="0">0/4</option>
+            <option <?php if($releve->get_niveau() == 1) echo "selected"; ?> value="1">1/4</option>
+            <option <?php if($releve->get_niveau() == 2) echo "selected"; ?> value="2">2/4</option>
+            <option <?php if($releve->get_niveau() == 3) echo "selected"; ?> value="3">3/4</option>
+            <option <?php if($releve->get_niveau() == 4) echo "selected"; ?> value="4">4/4</option>
         </select>
         </div>
         <div>
