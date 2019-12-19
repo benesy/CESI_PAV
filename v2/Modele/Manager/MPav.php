@@ -58,7 +58,17 @@ class               MPav extends BDD
             $pav->set_ville($res['ville']);
             return $pav;
         }
-     }
+    }
+
+    public function getPavByReleve()
+    {
+        $res = $this->dbquery("SELECT pav.id, MAX(releve.date) as date, releve.niveau, releve.commentaire, pav.numero, pav.adresse, pav.code_postal, pav.ville FROM releve INNER JOIN pav ON releve.id_pav = pav.id WHERE releve.status = 's' GROUP BY releve.id_pav;");
+        $res = $res->fetchAll();
+        if(isset($res[0]['id']))
+            return $res;
+        return false;
+    }
+
 
     public function update($pav)
     {
