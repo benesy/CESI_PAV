@@ -1,7 +1,7 @@
 <?php
 $title = "PAV - Tournée";
 ob_start();
-var_dump($_POST);
+
 ?>
 Tournée - Edition
 
