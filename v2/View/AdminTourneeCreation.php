@@ -16,7 +16,7 @@ ob_start();
     <?php } else if (isset($agentList)){?>
         <div>
         <form action="?page=creationtournee" method="post">
-    
+        <label for="id_agent">Agent affecté : </label>
         <select name="id_agent">
         <?php 
         foreach ($agentList as $agent){

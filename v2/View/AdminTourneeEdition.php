@@ -24,7 +24,7 @@ Tournée - Edition
             echo '<option value="'.$tournee->get_id().'">'.$tournee->get_id()." - ".$tournee->get_date()."</option>";
         } ?>
         </select>
-        <input type="hidden" id="id" name="id" require value="<?= $tournee->get_id()?>">
+        
         <button type="submit">Editer</button>
     </div>    
     </form>

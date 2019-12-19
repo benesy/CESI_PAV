@@ -3,15 +3,17 @@ $title = "PAV - Tournée";
 $menu = '<li><a href="?page=disconnect">Deconnection</a></li>';
 ob_start();
 ?>
-<table>
+
+<?php if (isset($noTournee)){
+echo "Pas de tournée prevue aujourd'hui.";
+} else {?>
+    <table>
     <tr>
         <th>Numero relevé</th>
         <th>Adresse</th>
         <th>Relever</th>
     </tr>
-<?php if (isset($noTournee)){
-echo "Pas de tournée prevue aujourd'hui";
-} else {
+    <?php
     foreach ($releveList as $releve){
         foreach ($pavList as $pav){
             if($releve->get_id_pav() == $pav->get_id()){
