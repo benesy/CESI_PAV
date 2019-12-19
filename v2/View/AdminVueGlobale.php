@@ -9,7 +9,7 @@ Vue globale
     <th>Id Pav</th>
     <th>Date Dernier Relevé</th>
     <th>Niveau</th>
-    <th>Commentaire Postal</th>
+    <th>Commentaire</th>
     <th>Numero</th>
     <th>Adresse</th>
     <th>CP</th>
