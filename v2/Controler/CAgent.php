@@ -24,7 +24,8 @@ class CAgent
     public function pavReleve()
     {
         $mreleve = new MReleve();
-        $releve = $mreleve->getById($_GET['id_releve']);
+        if (isset($_GET['id_releve']))
+            $releve = $mreleve->getById($_GET['id_releve']);
         require("View/AgentPavReleve.php");
         require("View/AgentMenu.php");
         require("View/Template.php");
