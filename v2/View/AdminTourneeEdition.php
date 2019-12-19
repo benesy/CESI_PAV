@@ -26,7 +26,7 @@ Tournée - Edition
         } ?>
         </select>
         
-        <button type="submit" class="form-control">Editer</button>
+        <button type="submit" class="btn btn-primary">Editer</button>
     </div>    
     </form>
 <br>
@@ -50,7 +50,7 @@ Tournée - Edition
             echo '<option value="'.$agent->get_id().'">'.$agent->get_login()." ".$agent->get_nom()." ".$agent->get_prenom().'</option>';
         } ?>
         </select>
-        <button type="submit" class="form-control" href="?page=editiontournee">Modifier</button>
+        <button type="submit" class="btn btn-primary" href="?page=editiontournee">Modifier</button>
 </form>
     </div>
      <br>
@@ -71,7 +71,7 @@ Tournée - Edition
         } ?>
         </select>
         <input type="hidden" id="id" name="id" require value="<?= $tournee->get_id()?>">
-        <button type="submit" class="form-control">Ajouter à la tournée</button>
+        <button type="submit" class="btn btn-primary">Ajouter à la tournée</button>
     </div>
 <br>
 
