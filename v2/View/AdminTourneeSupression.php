@@ -11,13 +11,14 @@ Tournée - Suppression
 
 <?php } else if (isset($tourneeList)) { ?>
     <form action="?page=supprtournee" method="post">
-        <select name="id">
+        <div class="form-group"> 
+    <select name="id" class="form-control">
         <?php 
         foreach ($tourneeList as $tournee){
             echo '<option value="'.$tournee->get_id().'">'.$tournee->get_id()." ".$tournee->get_date().'</option>';
         } ?>
         </select>
-        <button type="submit" href="?page=supprtournee">Supprimer</button>
+        <button type="submit" class="form-control" href="?page=supprtournee">Supprimer</button>
         
 </form>
 <?php }  ?>
