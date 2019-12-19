@@ -9,7 +9,6 @@ Agent relevé pav
         <input type="hidden" name ="id" value="<?= $releve->get_id() ?>">
         <input type="hidden" name ="status" value="<?= $releve->get_status() ?>">
         <input type="hidden" name ="date" value="<?= date("Y-m-d") ?>">
-        <input type="hidden" name ="status" value="<?= $releve->get_status() ?>">
         <div>
         <label for="niveau">Niveau</label>
         <select id="niveau" name="niveau">
