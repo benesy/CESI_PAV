@@ -14,25 +14,7 @@ echo "Pas de tournée prevue aujourd'hui.";
         <th>Adresse</th>
         <th>Relever</th>
     </tr>
-<<<<<<< HEAD
     <?php
-    foreach ($releveList as $releve){
-        foreach ($pavList as $pav){
-            if($releve->get_id_pav() == $pav->get_id()){
-                $link = "?page=pavreleve&id_releve=".$releve->get_id();
-                ?> <tr>
-                    <td><?= $releve->get_id() ?></td>
-                    <td><?= $pav->get_numero()." ". $pav->get_adresse()." ".$pav->get_code_postal()." ".$pav->get_ville()?></td>
-                    <td><a href="<?= $link?>" >Relever</a></td>
-                </tr><?php
-            }
-        }
-    }
-?>
-=======
-    <?php if (isset($noTournee)) {
-        echo "Pas de tournée prevue aujourd'hui";
-    } else {
         foreach ($releveList as $releve) {
             foreach ($pavList as $pav) {
                 if ($releve->get_id_pav() == $pav->get_id()) {
@@ -53,7 +35,6 @@ echo "Pas de tournée prevue aujourd'hui.";
                                     }
                                 }
                                 ?>
->>>>>>> 659c25c607d27c4a1f3f89213bb5804306abdfae
 </table>
 <?php } ?>
 
