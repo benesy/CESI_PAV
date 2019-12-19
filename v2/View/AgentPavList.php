@@ -13,10 +13,7 @@ echo "Pas de tournée prevue aujourd'hui.";
         <th>Numero relevé</th>
         <th>Adresse</th>
         <th>Relever</th>
-    </tr>
-    <?php if (isset($noTournee)) {
-        echo "Pas de tournée prevue aujourd'hui";
-    } else {
+    </tr><?php
         foreach ($releveList as $releve) {
             foreach ($pavList as $pav) {
                 if ($releve->get_id_pav() == $pav->get_id()) {
